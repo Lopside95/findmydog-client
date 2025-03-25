@@ -9,6 +9,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { FormInput } from "@/types/utils";
 import { useFormContext } from "react-hook-form";
+import { Eye, EyeOff } from "lucide-react";
 
 const TextField = ({
   name,
