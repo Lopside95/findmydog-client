@@ -50,12 +50,32 @@ const Home = () => {
   console.log("posts", posts);
 
   return (
-    <div>
-      <h1>Home</h1>
-      <Button className="bg-primary" onClick={() => console.log("Helllolol")}>
-        Welcome to the home page!
-      </Button>
-    </div>
+    <main>
+      <section className="flex flex-col">
+        <h1 className="w-64">
+          We help people find lost dogs, and help stray dogs find homes
+        </h1>
+        <img
+          src="/cover.svg"
+          alt="landing illustration of a dog"
+          className="w-80 self-end"
+        />
+      </section>
+      <section className="h-[26rem] flex flex-col bg-my-primary w-screen justify-evenly items-center px-0">
+        <article className="flex flex-col items-center gap-5 text-center">
+          <h2 className="w-72">Report a sighting of a lost or stray dog</h2>
+          <Button className="bg-my-secondary" variant="primary">
+            Report
+          </Button>
+        </article>
+        <article className="flex flex-col items-center gap-5 text-center">
+          <h2 className="w-72">Find a lost dog</h2>
+          <Button className="bg-my-secondary" variant="primary">
+            Find
+          </Button>
+        </article>
+      </section>
+    </main>
   );
 };
 

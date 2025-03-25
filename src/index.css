@@ -103,7 +103,6 @@
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
-  --color-my-primary: var(--my-primary);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
@@ -129,6 +128,9 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-my-primary: var(--my-primary);
+  --color-my-secondary: var(--my-secondary);
+  --color-my-tertiary: var(--my-tertiary);
 }
 
 @layer base {
@@ -137,5 +139,20 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  main {
+    @apply py-5;
+  }
+  section {
+    @apply px-6;
+  }
+  h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-3xl;
+  }
+  h3 {
+    @apply text-2xl;
   }
 }
