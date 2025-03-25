@@ -1,5 +1,15 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "./ui/sheet";
+import { Menu } from "lucide-react";
+import { Button } from "./ui/button";
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -25,7 +35,29 @@ const Nav = () => {
     setDesktopIsShown(false);
   };
 
-  return <div>Nav</div>;
+  return (
+    <Sheet>
+      <SheetTrigger className="absolute top-4 right-4 z-50 sm:hidden">
+        <Menu className="w-8 h-8" />
+      </SheetTrigger>
+      <SheetContent className="w-[400px] sm:w-[540px] bg-[#F37657] border-none ">
+        <SheetHeader>
+          {/* <SheetTitle>Menu</SheetTitle> */}
+          <SheetDescription></SheetDescription>
+        </SheetHeader>
+        {/* <SheetHeader>
+          <SheetTitle>Are you absolutely sure?</SheetTitle>
+          <SheetDescription>
+          </SheetDescription>
+        </SheetHeader> */}
+        <div className="flex flex-col gap-4 px-6 py-4 font-semibold ">
+          <h2>Home</h2>
+          <h2>Create Profile</h2>
+          <h2>Sign In</h2>
+        </div>
+      </SheetContent>
+    </Sheet>
+  );
 };
 
 export default Nav;

@@ -63,7 +63,7 @@ const Home = () => {
       </section>
       <section className="h-[26rem] flex flex-col bg-my-primary w-screen justify-evenly items-center px-0">
         <article className="flex flex-col items-center gap-5 text-center">
-          <h2 className="w-72">Report a sighting of a lost or stray dog</h2>
+          <h2 className="w-72">Report the sighting of a lost or stray dog</h2>
           <Button className="bg-my-secondary" variant="primary">
             Report
           </Button>
