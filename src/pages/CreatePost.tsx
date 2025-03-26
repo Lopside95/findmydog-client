@@ -134,7 +134,7 @@ const CreatePost = () => {
         <main>
           <section className="flex flex-col">
             <h2>Step one</h2>
-            <div className="w-full h-[1px] bg-my-primary my-5"></div>
+            <div className="w-full h-[1px] bg-accent my-5"></div>
             <article className="flex flex-col gap-5">
               <TextField name="title" label="Title" />
               <TextField name="description" label="Description" />
@@ -155,8 +155,8 @@ const CreatePost = () => {
             </article>
             <article className="flex flex-col gap-5 pt-5">
               <FormLabel className="text-2xl">Upload a picture</FormLabel>
-              <div className="w-full h-[130px] bg-my-secondary flex items-center justify-center">
-                <Plus className="w-8 h-8 text-my-primary" />
+              <div className="w-full h-[130px] bg-secondary flex items-center justify-center">
+                <Plus className="w-8 h-8 text-accent" />
               </div>
             </article>
             <Button
