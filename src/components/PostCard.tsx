@@ -77,7 +77,9 @@ const PostCard = ({ post }: PostCardProps) => {
             <MyAvatar src="" alt="User Avatar">
               <UserIcon />
             </MyAvatar>
-            <h5>{user.firstName}</h5>
+            <h5>
+              {user.firstName} {user.lastName}
+            </h5>
           </div>
           <Badge className="bg-secondary-alt h-5 text-primary">
             {updatedAt}
@@ -85,53 +87,44 @@ const PostCard = ({ post }: PostCardProps) => {
         </CardTitle>
         <CardDescription>{post.title}</CardDescription>
       </CardHeader>
-
-      <Carousel className="w-[80%] self-center">
-        <CarouselContent className=" w-4/5  ">
-          <CarouselItem className="rounded-xl w-40 h-52 snap-start overflow-hidden bg-accent mx-5 p-0">
-            <img
-              src={post.img ?? "/images/dog-404.png"}
-              alt="Post Image"
-              className=" object-cover w-full h-full"
-              // className="w-52 rounded-md h-40 object-cover "
-            />
-          </CarouselItem>
-          <CarouselItem className=" w-40 h-52 p-0 snap-start -mr-14 rounded-xl object-cover relative">
-            <StillMap
-              ref={mapRef}
-              lng={post.longitude ?? 0}
-              lat={post.latitude ?? 0}
-            />
-            <Button
-              // onReset={() => {
-              //   console.log("Reset triggered from PostCard");
-              // }}
-              onClick={handleReset}
-              variant="secondary"
-              className=" absolute bottom-0 left-0 text-xs rounded-none px-1 z-50 h-5"
-            >
-              Reset
-            </Button>
-            {/* <p
-              // variant="secondary"
-              className=" absolute bottom-1 left-1 text-xs bg-secondary-alt px-1 rounded-xl"
-            >
-              Reset
-            </p> */}
-            {/* <MapComponent
-              userMarkers={markers}
-              setUserMarkers={setUserMarkers}
-            /> */}
-          </CarouselItem>
-          {/* <CarouselItem>...</CarouselItem> */}
-        </CarouselContent>
-        {/* <CarouselPrevious />
-        <CarouselNext /> */}
-      </Carousel>
-
+      <CardContent>
+        <Carousel className="w-[90%] self-center pb-5">
+          <CarouselContent className=" w-[88%]  ">
+            <CarouselItem className="rounded-xl w-40 h-52 snap-start overflow-hidden bg-accent mx-4 p-0">
+              <img
+                src={post.img ?? "/images/dog-404.png"}
+                alt="Post Image"
+                className=" object-cover w-full h-full"
+                // className="w-52 rounded-md h-40 object-cover "
+              />
+            </CarouselItem>
+            <CarouselItem className="w-40 h-52 p-0 snap-start -mr-14 rounded-xl object-cover relative">
+              <StillMap
+                ref={mapRef}
+                lng={post.longitude ?? 0}
+                lat={post.latitude ?? 0}
+              />
+              <Button
+                // onReset={() => {
+                //   console.log("Reset triggered from PostCard");
+                // }}
+                onClick={handleReset}
+                variant="secondary"
+                className=" absolute bottom-0 left-0 text-xs rounded-none px-1 z-50 h-5"
+              >
+                Reset
+              </Button>
+            </CarouselItem>
+          </CarouselContent>
+        </Carousel>
+        <Badge className="ml-1">
+          {status.charAt(0).toUpperCase() + status.slice(1)}
+        </Badge>
+        <p className="text-sm pl-2 pt-2 font-light font-inter w-4/5 leading-tight">
+          {post.description}
+        </p>
+      </CardContent>
       <CardFooter className="flex-col flex items-start">
-        <Badge>{status.charAt(0).toUpperCase() + status.slice(1)}</Badge>
-
         <div className="flex items-center gap-2 mt-2">
           <MyAvatar src="" alt="User Avatar">
             <UserIcon />

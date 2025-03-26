@@ -82,8 +82,7 @@ const CreatePost = () => {
     resolver: zodResolver(postSchema),
     defaultValues: {
       tags: [],
-      status: "OPEN",
-      type: "LOST",
+      status: "MISSING",
       img: "https://storage.googleapis.com/find-my-dog/greyhound.jpg",
       urgency: 3,
       longitude: 0,
