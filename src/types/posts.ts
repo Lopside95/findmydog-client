@@ -1,5 +1,5 @@
 import { SetStateAction } from "react";
-import { PostStatus, PostType } from "./schemas";
+import { PostStatus } from "./schemas";
 
 export type Tag = {
   id: string;
@@ -21,7 +21,7 @@ export type Post = {
   img?: string;
   description: string;
   urgency: number;
-  type: PostType;
+  // type: PostType;
   status: PostStatus;
   tags: Tag[];
   comments: UserComment[];

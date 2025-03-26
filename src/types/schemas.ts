@@ -13,8 +13,8 @@ export const postSchema = z.object({
   img: z.string().optional(),
   description: z.string().min(1, { message: "Description is required" }),
   urgency: z.number().min(1),
-  type: z.enum(["LOST", "FOUND", "SIGHTING"]),
-  status: z.enum(["OPEN", "CLOSED"]),
+  // type: z.enum(["LOST", "FOUND", "SIGHTING"]),
+  status: z.enum(["MISSING", "FOUND", "SEEN"]),
   tags: z.array(tag),
   longitude: z.number().optional(),
   latitude: z.number().optional(),
@@ -77,15 +77,16 @@ export type LoginSchema = z.infer<typeof loginSchema>;
 export type CommentSchema = z.infer<typeof commentSchema>;
 export type TagSchema = z.infer<typeof tagSchema>;
 
-export enum PostType {
+// export enum PostType {
+// "LOST",
+// "FOUND",
+// "SIGHTING",
+// }
+
+export enum PostStatus {
   "LOST",
   "FOUND",
   "SIGHTING",
-}
-
-export enum PostStatus {
-  "OPEN",
-  "CLOSED",
 }
 
 // export {

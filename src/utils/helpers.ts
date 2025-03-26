@@ -21,7 +21,6 @@ export const postWithUserPayload = (post: PostWithUser) => {
     title: post.title,
     description: post.description,
     urgency: post.urgency,
-    type: post.type,
     status: post.status,
     comments: post.comments,
     longitude: post.longitude,
