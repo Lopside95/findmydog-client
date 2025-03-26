@@ -3,6 +3,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import Home from "./pages/Home";
 import Nav from "./components/Nav";
 import BottomNav from "./components/BottomNav";
+import CreatePost from "./pages/CreatePost";
 // import CreatePost from "./pages/CreatePost/CreatePost";
 // import Nav from "./components/Nav/Nav";
 // import Home from "./pages/Home/Home";
@@ -26,6 +27,7 @@ export const App = () => {
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/posts/create-post" element={<CreatePost />} />
             {/* <Route path="/posts/:id" element={<SinglePost />} />
             <Route path="/posts/create-post" element={<CreatePost />} />
             <Route path="/users/signup" element={<SignUp />} />

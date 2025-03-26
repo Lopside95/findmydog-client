@@ -22,7 +22,7 @@ const TextField = ({
 }: FormInput) => {
   const { control, getFieldState } = useFormContext();
 
-  const fieldStyle = `w-80 ${cn}`;
+  const fieldStyle = `w-full ${cn} border-none bg-my-secondary rounded-none shadow-none caret-my-primary focus:border-none focus:shadow-none focus:ring-0 focus:outline-none focus:shadow-none focus:none focus-visible:ring-0`;
 
   const error = getFieldState(name).error;
 
@@ -32,7 +32,7 @@ const TextField = ({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className={`${error?.message ? "hidden" : ""}`}>
+          <FormLabel className={`${error?.message ? "hidden" : ""} text-2xl`}>
             {label}
           </FormLabel>
           <FormMessage />
