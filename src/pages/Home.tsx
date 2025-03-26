@@ -1,7 +1,7 @@
 import { getAll } from "@/api/utils";
 import PostCard from "@/components/PostCard";
 import { Button } from "@/components/ui/button";
-import { Post, PostWithUserDetails } from "@/types/posts";
+import { Post, PostWithUser } from "@/types/posts";
 import { Tag } from "@/types/schemas";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -10,16 +10,20 @@ import { useNavigate } from "react-router";
 const Home = () => {
   const navigate = useNavigate();
 
-  const [posts, setPosts] = useState<PostWithUserDetails[]>();
+  const [posts, setPosts] = useState<PostWithUser[]>();
   const [tags, setTags] = useState<Tag[] | null>(null);
   const [selectedTags, setSelectedTags] = useState<Tag[] | null>(null);
-  const [filteredPosts, setFilteredPosts] = useState<
-    PostWithUserDetails[] | null
-  >(null);
+  const [filteredPosts, setFilteredPosts] = useState<PostWithUser[] | null>(
+    null
+  );
 
   const fetchData = async () => {
-    const postsData = await getAll<PostWithUserDetails[]>("posts");
+    const postsData = await getAll<PostWithUser[]>("posts");
     const tagsData = await getAll<Tag[]>("tags");
+    // const formatted = postsData?.map((post) => {
+    //   return postWithUserPayload(post);
+    // });
+
     setPosts(postsData);
 
     if (tagsData) {
@@ -48,10 +52,6 @@ const Home = () => {
       setFilteredPosts(posts || []);
     }
   }, [posts, selectedTags]);
-
-  console.log("tags", tags);
-
-  console.log("posts", posts);
 
   return (
     <main>

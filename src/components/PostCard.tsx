@@ -1,4 +1,4 @@
-import { Post, PostWithUserDetails, User } from "@/types/posts";
+import { Post, PostWithUser, User } from "@/types/posts";
 import {
   Card,
   CardHeader,
@@ -9,25 +9,35 @@ import {
 } from "./ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 import { UserIcon } from "lucide-react";
+import MyAvatar from "./MyAvatar";
+import { Badge } from "./ui/badge";
+import { formatDateShort } from "@/utils/helpers";
 
 interface PostCardProps {
-  post: PostWithUserDetails;
+  post: PostWithUser;
 }
 
 const PostCard = ({ post }: PostCardProps) => {
+  const user = {
+    firstName: post.first_name,
+    lastName: post.last_name,
+    email: post.email,
+  };
+
+  const updatedAt = formatDateShort(new Date(post.updated_at));
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle>
-          <Avatar>
-            <AvatarImage src="" alt="User Avatar" />
-            <AvatarFallback>
-              <UserIcon />
-            </AvatarFallback>
-          </Avatar>
+        <CardTitle className="flex">
+          <MyAvatar src="" alt="User Avatar">
+            <UserIcon />
+          </MyAvatar>
+          <h5>{user.firstName}</h5>
+          <Badge className="bg-secondary-alt text-primary">{updatedAt}</Badge>
         </CardTitle>
-        <CardDescription>{post.first_name}</CardDescription>
       </CardHeader>
+      <CardDescription>{post.title}</CardDescription>
       <CardContent>Image</CardContent>
       <CardFooter>5 comments</CardFooter>
     </Card>

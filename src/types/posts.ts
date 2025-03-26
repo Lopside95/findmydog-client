@@ -32,9 +32,10 @@ export type Post = {
   user_id?: string;
 };
 
-export interface PostWithUserDetails extends Post {
+export interface PostWithUser extends Post {
   first_name: string;
   last_name: string;
+  email: string;
 }
 
 export type User = {

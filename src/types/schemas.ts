@@ -21,6 +21,14 @@ export const postSchema = z.object({
   userId: z.string().optional(),
 });
 
+// export const postWithUserSchema = postSchema.extend({
+//   user: z.object({
+//     firstName: z.string(),
+//     lastName: z.string(),
+//     email: z.string().email(),
+//   }),
+// });
+
 export const userSchema = z.object({
   firstName: z.string().min(1, { message: "First name is required" }),
   lastName: z.string().min(1, { message: "Last name is required" }),
@@ -59,6 +67,7 @@ export const deletePostShchema = z.object({
   userId: z.string().optional(),
 });
 
+// export type PostWithUserSchema = z.infer<typeof postWithUserSchema>;
 export type PostSchema = z.infer<typeof postSchema>;
 export type DeletePostSchema = z.infer<typeof deletePostShchema>;
 export type Tag = z.infer<typeof tag>;

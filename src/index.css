@@ -16,6 +16,7 @@
     "Noto Color Emoji";
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
+  --font-inter: "Inter", sans-serif;
 }
 
 @custom-variant dark (&:is(.dark *));
@@ -30,7 +31,8 @@
   --popover-foreground: oklch(0.145 0 0);
   --my-primary: hsl(112, 38%, 58%);
   --my-secondary: hsl(0, 6%, 93%);
-  --my-tertiary: hsl(39, 100%, 50%);
+  --secondary-alt: hsl(0, 0%, 85%);
+  --tertiary: hsl(39, 100%, 50%);
   --primary: oklch(0.205 0 0);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
@@ -130,7 +132,9 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --color-my-primary: var(--my-primary);
   --color-my-secondary: var(--my-secondary);
-  --color-my-tertiary: var(--my-tertiary);
+  --color-tertiary: var(--tertiary);
+  --color-secondary-alt: var(--secondary-alt);
+  --font-inter: var(--font-inter);
 }
 
 @layer base {
@@ -154,5 +158,11 @@
   }
   h3 {
     @apply text-2xl;
+  }
+  h4 {
+    @apply text-xl;
+  }
+  h5 {
+    @apply text-lg font-inter font-normal;
   }
 }
