@@ -66,7 +66,7 @@ const Home = () => {
         />
         <ChevronDown className="w-20 h-20 stroke-[0.5] mx-auto my-10" />
       </section>
-      <section className="h-[26rem] flex flex-col bg-accent w-screen justify-evenly items-center px-0">
+      <section className="h-[26rem] flex flex-col bg-accent w-screen justify-evenly items-center mb-5 px-0">
         <article className="flex flex-col items-center gap-5 text-center">
           <h2 className="w-72">Report the sighting of a lost or stray dog</h2>
           <Button

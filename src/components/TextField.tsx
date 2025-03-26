@@ -22,7 +22,7 @@ const TextField = ({
 }: FormInput) => {
   const { control, getFieldState } = useFormContext();
 
-  const fieldStyle = `w-full ${cn} border-none bg-secondary rounded-none shadow-none caret-my-primary focus:border-none focus:shadow-none focus:ring-0 focus:outline-none focus:shadow-none focus:none focus-visible:ring-0`;
+  const fieldStyle = `w-full ${cn} border-none bg-secondary rounded-none shadow-none caret-accent focus:border-none focus:shadow-none focus:ring-0 focus:outline-none focus:shadow-none focus:none focus-visible:ring-0`;
 
   const error = getFieldState(name).error;
 

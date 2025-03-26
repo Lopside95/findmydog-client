@@ -7,7 +7,7 @@ const BottomNav = () => {
   // const userIcon =
 
   return (
-    <div className="flex fixed bottom-0 h-14 w-full bg-my-secondary items-center justify-between px-10">
+    <div className="flex fixed bottom-0 h-14 w-full bg-secondary items-center justify-between px-10">
       <Home className="w-8 h-8" onClick={() => navigate("/")} />
       <Avatar>
         <AvatarImage src="/athena.svg" />

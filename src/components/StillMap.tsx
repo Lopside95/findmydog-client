@@ -149,9 +149,9 @@ const StillMap = forwardRef(({ lng, lat }: StillMapProps, ref) => {
 
   return (
     <div
-      style={{ height: "250px", width: "100%" }}
+      style={{ height: "100%", width: "100%" }}
       ref={mapContainerRef}
-      className=" relative"
+      className="relative rounded-2xl"
     />
     // <>
     //   <div
