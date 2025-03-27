@@ -3,8 +3,14 @@
 
 @font-face {
   font-family: "RomieTrial-Regular";
-  src: url("/src/assets/fonts/RomieTrial-Regular.woff2") format("woff2"),
-    url("/src/assets/fonts/RomieTrial-Regular.woff") format("woff");
+  src: url("/fonts/RomieTrial-Regular.woff2") format("woff2"),
+    url("/fonts/RomieTrial-Regular.woff") format("woff"),
+    url("/fonts/RomieTrial-Regular.otf") format("otf"),
+    url("/fonts/RomieTrial-Regular.ttf") format("ttf");
+  /* src: url("/src/assets/fonts/RomieTrial-Regular.woff2") format("woff2"),
+    url("/src/assets/fonts/RomieTrial-Regular.woff") format("woff"),
+    url("/src/assets/fonts/RomieTrial-Regular.otf") format("otf"),
+    url("/src/assets/fonts/RomieTrial-Regular.ttf") format("ttf"); */
   font-weight: 400;
   font-style: normal;
 }
