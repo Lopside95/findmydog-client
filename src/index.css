@@ -58,6 +58,10 @@
   --accent-alt: hsl(39, 100%, 50%);
   --secondary: hsl(0, 6%, 93%);
   --secondary-alt: hsl(0, 0%, 85%);
+
+  /* Single source of truth utility classes for padding */
+  --xdf: 1.5rem;
+  --tdf: 6rem;
 }
 
 .dark {
@@ -137,6 +141,9 @@
   --color-tertiary: var(--tertiary); */
   --color-secondary-alt: var(--secondary-alt);
   --font-inter: var(--font-inter);
+  /* --padding */
+  --padding-xdf: calc(var(--spacing) * 6);
+  --padding-tdf: calc(var(--spacing) * 24);
 }
 
 @layer base {
@@ -147,10 +154,13 @@
     @apply bg-background text-foreground mb-20;
   }
   main {
-    @apply pt-24;
+    @apply pt-tdf;
+  }
+  form {
+    @apply pt-tdf;
   }
   section {
-    @apply px-6;
+    @apply px-xdf;
   }
   h1 {
     @apply text-4xl;

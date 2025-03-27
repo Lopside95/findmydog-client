@@ -8,7 +8,7 @@ import {
   FormMessage,
 } from "./ui/form";
 import { Input } from "./ui/input";
-import { EyeOff } from "lucide-react";
+import { Eye, EyeClosed, EyeOff } from "lucide-react";
 import { FormInput } from "@/types/utils";
 
 const PasswordInput = ({
@@ -20,10 +20,13 @@ const PasswordInput = ({
   cn,
   defVal,
 }: FormInput) => {
-  const { control } = useFormContext();
+  const { control, getFieldState } = useFormContext();
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
+  const fieldStyle = `w-full ${cn} border-none bg-secondary rounded-none shadow-none caret-accent focus:border-none focus:shadow-none focus:ring-0 focus:outline-none focus:shadow-none focus:none focus-visible:ring-0`;
+
+  const error = getFieldState(name).error;
   return (
     <FormField
       control={control}
@@ -31,28 +34,27 @@ const PasswordInput = ({
       render={({ field }) => (
         <>
           <FormItem className="w-full">
-            <FormLabel className="pl-1.5 flex gap-4 text-base-txtClr ">
-              {" "}
+            <FormLabel className={`${error?.message ? "hidden" : ""} text-2xl`}>
               {label}
-              <FormMessage className="text-md capitalize dark:text-red-400" />
             </FormLabel>
+            <FormMessage className="text-md capitalize dark:text-red-400" />
             <FormControl>
               <div className="relative">
                 <Input
                   {...field}
-                  className=""
+                  className={fieldStyle}
                   placeholder={placeholder}
                   type={showPassword ? "" : "password"}
                 />
 
                 {showPassword ? (
                   <EyeOff
-                    className="absolute right-4 top-1/2 w-5 -translate-y-1/2 cursor-pointer text-base-bg opacity-70"
+                    className="absolute right-4 top-1/2 w-5 -translate-y-1/2 cursor-pointer text-base-bg opacity-70 text-accent-alt"
                     onClick={() => setShowPassword(!showPassword)}
                   />
                 ) : (
-                  <EyeOff
-                    className="absolute right-4 top-1/2 w-5 -translate-y-1/2 cursor-pointer text-base-bg opacity-70"
+                  <Eye
+                    className="absolute right-4 top-1/2 w-5 -translate-y-1/2 cursor-pointer text-base-bg opacity-70 text-accent"
                     onClick={() => setShowPassword(!showPassword)}
                   />
                 )}

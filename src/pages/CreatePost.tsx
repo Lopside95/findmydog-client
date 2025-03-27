@@ -19,6 +19,8 @@ import {
 import { FormLabel } from "@/components/ui/form";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import MapComponent from "@/components/Map";
 
 const CreatePost = () => {
   const [allTags, setAllTags] = useState<Tag[]>();
@@ -119,6 +121,12 @@ const CreatePost = () => {
     value: tag.id,
   }));
 
+  const errors = form.formState.errors;
+
+  useEffect(() => {
+    console.log("errors", errors);
+  }, [form.formState.errors]);
+
   const { register, watch, formState } = form;
 
   useEffect(() => {
@@ -130,15 +138,14 @@ const CreatePost = () => {
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <main>
-          <section className="flex flex-col">
-            <h2>Step one</h2>
-            <div className="w-full h-[1px] bg-accent my-5"></div>
-            <article className="flex flex-col gap-5">
-              <TextField name="title" label="Title" />
-              <TextField name="description" label="Description" />
-              <TextField name="tags" label="Tags" />
-              {/* <Select>
+        <section className="flex flex-col">
+          <h2>Step one</h2>
+          <div className="w-full h-[1px] bg-accent my-5"></div>
+          <article className="flex flex-col gap-5">
+            <TextField name="title" label="Title" />
+            <TextField name="description" label="Description" />
+            <TextField name="tags" label="Tags" />
+            {/* <Select>
                 <SelectTrigger className="w-full border-none shadow-none focus:border-none focus:ring-0 focus:outline-none focus:shadow-none focus:none focus-visible:ring-0">
                   <SelectValue placeholder="Select Tags" />
                 </SelectTrigger>
@@ -151,21 +158,20 @@ const CreatePost = () => {
          
                 </SelectContent>
               </Select> */}
-            </article>
-            <article className="flex flex-col gap-5 pt-5">
-              <FormLabel className="text-2xl">Upload a picture</FormLabel>
-              <div className="w-full h-[130px] bg-secondary flex items-center justify-center">
-                <Plus className="w-8 h-8 text-accent" />
-              </div>
-            </article>
-            <Button
-              className="mx-auto font-semibold my-5 py-[1.4rem]"
-              variant="primary"
-            >
-              Next Step
-            </Button>
-          </section>
-        </main>
+          </article>
+          <article className="flex flex-col gap-5 pt-5">
+            <FormLabel className="text-2xl">Upload a picture</FormLabel>
+            <div className="w-full h-[130px] bg-secondary flex items-center justify-center">
+              <Plus className="w-8 h-8 text-accent" />
+            </div>
+          </article>
+          <Button className="mx-auto my-5 py-[1.4rem]" variant="primary">
+            Next
+          </Button>
+        </section>
+        <section id="map" className="h-[30rem]">
+          {/* <MapComponent /> */}
+        </section>
       </form>
     </FormProvider>
   );
