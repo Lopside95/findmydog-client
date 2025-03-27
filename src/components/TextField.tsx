@@ -31,7 +31,7 @@ const TextField = ({
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem>
+        <FormItem className="w-full">
           <FormLabel className={`${error?.message ? "hidden" : ""} text-2xl`}>
             {label}
           </FormLabel>

@@ -11,7 +11,14 @@ import NotFoundPage from "./404-NotFound";
 import TextField from "@/components/TextField";
 import PasswordInput from "@/components/PasswordInput";
 import { Button } from "@/components/ui/button";
-import { Dialog } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { deleteUser } from "@/api/users";
 const Account = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -119,7 +126,10 @@ const Account = () => {
 
   return (
     <FormProvider {...form}>
-      <form className="px-xdf" onSubmit={form.handleSubmit(onSubmit)}>
+      <form
+        className="px-xdf flex flex-col items-center gap-5"
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
         <TextField label="First name" name="firstName" />
         <TextField label="Last name" name="lastName" />
         <TextField label="Email" name="email" />
@@ -128,17 +138,33 @@ const Account = () => {
           label="New Password"
           placeholder="New Password"
         />
-        <Button type="submit">Update Details</Button>
-        <Dialog />
-        <Button
-          onClick={(e) => {
-            e.preventDefault();
-            setDialogIsShown(true);
-          }}
-        >
-          Delete Account
+        <Button className="py-[1.4rem]" variant={"primary"} type="submit">
+          Update Details
         </Button>
-        <img src="/dog-2.svg" className="fixed bottom-12" />
+        {/* <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                className="py-[1.4rem]"
+                variant="primary"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setDialogIsShown(true);
+                }}
+              >
+                Delete Account
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Are you absolutely sure?</DialogTitle>
+                <DialogDescription>
+                  This action cannot be undone. This will permanently delete
+                  your account and remove your data from our servers.
+                </DialogDescription>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog> */}
+        <img src="/dog-2.svg" className="fixed left-5 bottom-12" />
       </form>
     </FormProvider>
   );

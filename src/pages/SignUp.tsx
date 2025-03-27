@@ -37,7 +37,10 @@ const SignUp = () => {
 
   return (
     <FormProvider {...form}>
-      <form className="px-xdf h-[500px]" onSubmit={form.handleSubmit(onSubmit)}>
+      <form
+        className="px-xdf flex-col flex gap-5 items-center"
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
         <TextField
           name="firstName"
           label="First name"
@@ -51,7 +54,7 @@ const SignUp = () => {
           placeholder="Password"
         />
 
-        <Button className="py-[1.4rem] " variant="primary">
+        <Button className="py-[1.4rem]" variant="primary">
           Sign Up
         </Button>
       </form>

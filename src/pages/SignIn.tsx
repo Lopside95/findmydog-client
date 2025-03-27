@@ -9,7 +9,7 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
 
-const LogIn = () => {
+const SignIn = () => {
   const navigate = useNavigate();
 
   const form = useForm<LoginSchema>({
@@ -44,27 +44,31 @@ const LogIn = () => {
   return (
     <FormProvider {...form}>
       <form className="" onSubmit={form.handleSubmit(onSubmit)}>
-        <section>
+        <section className="flex-col flex items-center gap-5">
           <TextField label="Email" name="email" placeholder="your@email.com" />
           <PasswordInput
             name="password"
             label="Password"
             placeholder="Password"
           />
-          <Button>Log In</Button>
-          <br />
+          <Button variant="primary" className="py-[1.4rem]">
+            Log In
+          </Button>
+          {/* <br />
           <Button
+            variant="primary"
+            className="py-[1.4rem]"
             onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
               e.preventDefault();
               navigate("/users/signup");
             }}
           >
             Sign Up
-          </Button>
+          </Button> */}
         </section>
       </form>
     </FormProvider>
   );
 };
 
-export default LogIn;
+export default SignIn;

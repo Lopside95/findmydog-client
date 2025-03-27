@@ -26,8 +26,6 @@ const PasswordInput = ({
 
   const fieldStyle = `w-full ${cn} border-none bg-secondary rounded-none shadow-none caret-accent focus:border-none focus:shadow-none focus:ring-0 focus:outline-none focus:shadow-none focus:none focus-visible:ring-0`;
 
-  console.log("showPassword", showPassword);
-
   const error = getFieldState(name).error;
   return (
     <FormField
@@ -38,8 +36,8 @@ const PasswordInput = ({
           <FormItem className="w-full">
             <FormLabel className={`${error?.message ? "hidden" : ""} text-2xl`}>
               {label}
-              <FormMessage className="text-md capitalize dark:text-red-400" />
             </FormLabel>
+            <FormMessage className="text-md capitalize dark:text-red-400" />
             <FormControl>
               <div className="relative">
                 <Input
