@@ -32,17 +32,17 @@ const Nav = () => {
   const handleNavigate = async (path: string) => {
     navigate(path);
     setIsShown(false);
-    setDesktopIsShown(false);
+    // setDesktopIsShown(false);
   };
 
   return (
-    <Sheet>
+    <Sheet open={isShown} onOpenChange={setIsShown}>
       <SheetTrigger className="absolute top-4 right-4 z-50 sm:hidden">
         <Menu className="w-8 h-8" />
       </SheetTrigger>
       <SheetContent className="w-[400px] sm:w-[540px] bg-[#F37657] border-none ">
         <SheetHeader>
-          {/* <SheetTitle>Menu</SheetTitle> */}
+          <SheetTitle>Menu</SheetTitle>
           <SheetDescription></SheetDescription>
         </SheetHeader>
         {/* <SheetHeader>
@@ -51,9 +51,13 @@ const Nav = () => {
           </SheetDescription>
         </SheetHeader> */}
         <div className="flex flex-col gap-4 px-6 py-4 font-semibold ">
-          <h2>Home</h2>
-          <h2>Create Profile</h2>
-          <h2>Sign In</h2>
+          <h2 onClick={() => handleNavigate("/")}>Home</h2>
+          <h2 onClick={() => handleNavigate("/users/signup")}>
+            Create Profile
+          </h2>
+          <h2 onClick={() => handleNavigate("/posts/create-post")}>New Post</h2>
+          <h2 onClick={() => handleNavigate("/users/login")}>Sign In</h2>
+          <h2 onClick={() => handleNavigate("/users/account")}>Profile</h2>
         </div>
       </SheetContent>
     </Sheet>

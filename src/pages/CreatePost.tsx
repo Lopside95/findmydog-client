@@ -19,6 +19,8 @@ import {
 import { FormLabel } from "@/components/ui/form";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import MapComponent from "@/components/Map";
 
 const CreatePost = () => {
   const [allTags, setAllTags] = useState<Tag[]>();
@@ -119,6 +121,12 @@ const CreatePost = () => {
     value: tag.id,
   }));
 
+  const errors = form.formState.errors;
+
+  useEffect(() => {
+    console.log("errors", errors);
+  }, [form.formState.errors]);
+
   const { register, watch, formState } = form;
 
   useEffect(() => {
@@ -158,12 +166,12 @@ const CreatePost = () => {
                 <Plus className="w-8 h-8 text-accent" />
               </div>
             </article>
-            <Button
-              className="mx-auto font-semibold my-5 py-[1.4rem]"
-              variant="primary"
-            >
-              Next Step
+            <Button className="mx-auto my-5 py-[1.4rem]" variant="primary">
+              Next
             </Button>
+          </section>
+          <section id="map" className="h-[30rem]">
+            {/* <MapComponent /> */}
           </section>
         </main>
       </form>
