@@ -37,7 +37,10 @@ const PasswordInput = ({
             <FormLabel className={`${error?.message ? "hidden" : ""} text-2xl`}>
               {label}
             </FormLabel>
-            <FormMessage className="text-md capitalize dark:text-red-400" />
+            {/* <FormLabel className={`${error?.message ? "hidden" : ""} text-2xl`}>
+              {label}
+            </FormLabel> */}
+            <FormMessage className="text-md dark:text-red-400" />
             <FormControl>
               <div className="relative">
                 <Input

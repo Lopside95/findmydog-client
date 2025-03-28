@@ -183,4 +183,7 @@
   h5 {
     @apply text-lg font-inter font-normal;
   }
+  p {
+    @apply text-lg;
+  }
 }

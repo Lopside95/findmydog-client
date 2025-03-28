@@ -34,8 +34,8 @@ export const App = () => {
             <Route path="/posts/create-post" element={<CreatePost />} />
             <Route path="/users/signup" element={<SignUp />} />
             <Route path="/users/signin" element={<SignIn />} />
-            <Route path="*" element={<NotFoundPage />} />
             <Route path="/users/account" element={<Account />} />
+            <Route path="*" element={<NotFoundPage />} />
             {/* <Route path="/posts/:id" element={<SinglePost />} />
             <Route path="/posts/create-post" element={<CreatePost />} />
             <Route path="/users/signup" element={<SignUp />} />

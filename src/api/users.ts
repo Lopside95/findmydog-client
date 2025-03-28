@@ -51,13 +51,12 @@ const createUser = async (user: UserSchema) => {
 
 const login = async (loginData: LoginSchema) => {
   try {
-    const res = await axios.post(`${baseUrl}/users/login`, loginData);
+    const res = await axios.post(`${baseUrl}/users/signin`, loginData);
     const data = res.data;
 
     localStorage.setItem("authToken", data.authToken);
     if (res.status === 200) {
-      toast("Loggen in successfully!");
-      // toaster.success("Logged in!");
+      toast("Logged in successfully!");
     }
     return res;
   } catch (error) {

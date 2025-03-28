@@ -60,6 +60,8 @@ const Nav = () => {
   //   }
   // };
 
+  const authStyle = authToken ? "hidden" : "";
+
   return (
     <Sheet open={isShown} onOpenChange={setIsShown}>
       <SheetTrigger className="absolute top-4 right-4 z-50 sm:hidden">
@@ -77,13 +79,29 @@ const Nav = () => {
         </SheetHeader> */}
         <div className="flex flex-col gap-4 px-6 py-4 font-semibold ">
           <h2 onClick={() => handleNavigate("/")}>Home</h2>
-          <h2 onClick={() => handleNavigate("/users/signup")}>
+          <h2
+            className={`${authToken && "hidden"}`}
+            onClick={() => handleNavigate("/users/signup")}
+          >
             Create Profile
           </h2>
           <h2 onClick={() => handleNavigate("/posts/create-post")}>New Post</h2>
-          <h2 onClick={() => handleNavigate("/users/signin")}>Sign In</h2>
-          <h2 onClick={() => handleNavigate("/users/account")}>Profile</h2>
-          <h2 onClick={handleSignOut}>Sign Out</h2>
+          <h2
+            className={`${authToken && "hidden"}`}
+            onClick={() => handleNavigate("/users/signin")}
+          >
+            Sign In
+          </h2>
+          <h2 className={`${!authToken && "hidden"}`} onClick={handleSignOut}>
+            Sign Out
+          </h2>
+          <h2
+            className={`${!authToken && "hidden"}`}
+            onClick={() => handleNavigate("/users/account")}
+          >
+            Profile
+          </h2>
+          {/* <h2 onClick={() => handleNavigate("/users/account")}>Profile</h2> */}
           <Dialog>
             <DialogTrigger asChild>
               <h2>Delete Account</h2>
