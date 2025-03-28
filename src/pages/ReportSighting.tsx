@@ -21,6 +21,8 @@ import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import MapComponent from "@/components/Map";
+import PageHeader from "@/components/PageHeader";
+import ImageUpload from "@/components/ImageUpload";
 
 const ReportSighting = () => {
   const [allTags, setAllTags] = useState<Tag[]>();
@@ -28,6 +30,7 @@ const ReportSighting = () => {
   const [user, setUser] = useState<User>();
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [toastShown, setToastShown] = useState<boolean>(false);
+  const [file, setFile] = useState<File | null>(null);
 
   const authToken = localStorage.getItem("authToken");
 
@@ -85,13 +88,17 @@ const ReportSighting = () => {
     defaultValues: {
       tags: [],
       status: "FOUND",
-      img: "https://storage.googleapis.com/find-my-dog/greyhound.jpg",
+      // img: "https://storage.googleapis.com/find-my-dog/greyhound.jpg",
       urgency: 3,
       // longitude: 0,
       // latitude: 0,
       userId: user?.id,
     },
   });
+
+  // const newPhoto = URL.createObjectURL(acceptedFiles[0]);
+
+  // setPhoto(newPhoto);
 
   useEffect(() => {
     if (userMarkers.length) {
@@ -111,6 +118,7 @@ const ReportSighting = () => {
       navigate("/posts/create-post/step-two", {
         state: {
           formVals,
+          file,
         },
       });
     } catch (error) {
@@ -155,8 +163,7 @@ const ReportSighting = () => {
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <section className="flex flex-col">
-          <h2>Step one</h2>
-          <div className="w-full h-[1px] bg-accent my-5"></div>
+          <PageHeader title="Step one" />
           <article className="flex flex-col gap-5">
             <TextField name="title" label="Title" />
             <TextField name="description" label="Description" />
@@ -175,13 +182,24 @@ const ReportSighting = () => {
                 </SelectContent>
               </Select> */}
           </article>
-          <article className="flex flex-col gap-5 pt-5">
+          <article className="flex flex-col gap-5 pt-5 max-h-[400px] ">
             <FormLabel className="text-2xl">Upload a picture</FormLabel>
-            <div className="w-full h-[130px] bg-secondary flex items-center justify-center">
+            <ImageUpload file={file || undefined} setFile={setFile} />
+            {/* <div className="w-full h-[130px] bg-secondary flex items-center justify-center">
+              <Input type="file" />
               <Plus className="w-8 h-8 text-accent" />
-            </div>
+            </div> */}
           </article>
-          <Button className="mx-auto my-5 py-[1.4rem]">Next</Button>
+          <Button
+            type="submit"
+            className="mx-auto my-5 py-[1.4rem] z-20"
+            // className={`py-[1.4rem] mx-auto ${
+            //   file !== null ? "mt-40" : "mt-4"
+            // }`}
+          >
+            Next
+          </Button>
+          {/* <Button className="mx-auto my-5 py-[1.4rem]">Next</Button> */}
         </section>
       </form>
     </FormProvider>

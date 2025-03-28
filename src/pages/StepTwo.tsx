@@ -1,4 +1,4 @@
-import { baseUrl } from "@/api/utils";
+import { baseUrl, uploadPhoto } from "@/api/utils";
 import MapComponent from "@/components/Map";
 import { Button } from "@/components/ui/button";
 import { UserMarker } from "@/types/posts";
@@ -26,6 +26,7 @@ const StepTwo = () => {
   const location = useLocation();
 
   const formVals = location.state?.formVals as Partial<PostSchema>;
+  const file = location.state?.file as File | null;
 
   useEffect(() => {
     if (formVals) {
@@ -42,7 +43,8 @@ const StepTwo = () => {
       description: formVals.description,
       tags: formVals.tags,
       status: formVals.status,
-      img: formVals.img,
+      img: "",
+      // img: formVals.img,
       urgency: formVals.urgency,
       longitude: 0,
       latitude: 0,
@@ -52,6 +54,22 @@ const StepTwo = () => {
   // "There was an error creating this postError: insert into `posts` (`description`, `img`, `latitude`, `longitude`, `status`, `title`, `type`, `urgency`, `user_id`) values ('dasDASdads', 'https://storage.googleapis.com/find-my-dog/greyhound.jpg', 0, 0, DEFAULT, 'aSDasaSD', DEFAULT, 3, 2) - Unknown column 'type' in 'field list'"
 
   const onSubmit: SubmitHandler<PostSchema> = async (data: PostSchema) => {
+    if (file !== null) {
+      const url = await uploadPhoto(
+        file,
+        `/images/${formVals.userId}/${formVals.title}/${file.name}`
+      );
+
+      data.img = url;
+    }
+    // if (file !== null) {
+    //   const url = await uploadPhoto(
+    //     file,
+    //     `/images/${shelterId}/${animalName}/${file.name}`
+    //   );
+
+    //   data.img = url;
+
     try {
       const res = await axios.post(`${baseUrl}/posts`, data, {
         headers: {
@@ -91,7 +109,11 @@ const StepTwo = () => {
           setUserMarkers={setUserMarkers}
         />
 
-        <Button className="py-[1.4rem] mt-4" type="submit">
+        <Button
+          className={`py-[1.4rem]  "mt-4"}`}
+          // className={`py-[1.4rem] ${file !== null ? "mt-40" : "mt-4"}`}
+          type="submit"
+        >
           Done
         </Button>
       </form>

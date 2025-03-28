@@ -20,6 +20,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { deleteUser } from "@/api/users";
+import PageHeader from "@/components/PageHeader";
 const Account = () => {
   const [user, setUser] = useState<User | null>(null);
   const [dialogIsShown, setDialogIsShown] = useState<boolean>(false);
@@ -131,22 +132,24 @@ const Account = () => {
 
   return (
     <FormProvider {...form}>
-      <form
-        className="px-xdf flex flex-col items-center gap-5"
-        onSubmit={form.handleSubmit(onSubmit)}
-      >
-        <TextField label="First name" name="firstName" />
-        <TextField label="Last name" name="lastName" />
-        <TextField label="Email" name="email" />
-        <PasswordInput
-          name="newPassword"
-          label="New Password"
-          placeholder="New Password"
-        />
-        <Button className="py-[1.4rem]" type="submit">
-          Update Details
-        </Button>
-        {/* <Dialog>
+      <main className="px-xdf ">
+        <PageHeader title="Your account" />
+        <form
+          className="flex flex-col pt-0 items-center gap-5"
+          onSubmit={form.handleSubmit(onSubmit)}
+        >
+          <TextField label="First name" name="firstName" />
+          <TextField label="Last name" name="lastName" />
+          <TextField label="Email" name="email" />
+          <PasswordInput
+            name="newPassword"
+            label="New Password"
+            placeholder="New Password"
+          />
+          <Button className="py-[1.4rem]" type="submit">
+            Update Details
+          </Button>
+          {/* <Dialog>
             <DialogTrigger asChild>
               <Button
                 className="py-[1.4rem]"
@@ -169,8 +172,9 @@ const Account = () => {
               </DialogHeader>
             </DialogContent>
           </Dialog> */}
-        <img src="/dog-2.svg" className="fixed left-5 bottom-12" />
-      </form>
+          <img src="/dog-2.svg" className="fixed left-5 bottom-12" />
+        </form>
+      </main>
     </FormProvider>
   );
 };

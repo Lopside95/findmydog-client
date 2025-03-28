@@ -7,6 +7,7 @@ import TextField from "@/components/TextField";
 import PasswordInput from "@/components/PasswordInput";
 import { Button } from "@/components/ui/button";
 import { createUser } from "@/api/users";
+import PageHeader from "@/components/PageHeader";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -37,24 +38,28 @@ const SignUp = () => {
 
   return (
     <FormProvider {...form}>
-      <form
-        className="px-xdf flex-col flex gap-5 items-center"
-        onSubmit={form.handleSubmit(onSubmit)}
-      >
-        <TextField
-          name="firstName"
-          label="First name"
-          placeholder="First name"
-        />
-        <TextField name="lastName" label="Last name" placeholder="Last name" />
-        <TextField name="email" label="Email" placeholder="your@email.com" />
-        <PasswordInput
-          name="password"
-          label="Password"
-          placeholder="Password"
-        />
+      <form className="px-xdf " onSubmit={form.handleSubmit(onSubmit)}>
+        <PageHeader title="Sign Up" />
+        <div className="flex-col flex gap-5 items-center">
+          <TextField
+            name="firstName"
+            label="First name"
+            placeholder="First name"
+          />
+          <TextField
+            name="lastName"
+            label="Last name"
+            placeholder="Last name"
+          />
+          <TextField name="email" label="Email" placeholder="your@email.com" />
+          <PasswordInput
+            name="password"
+            label="Password"
+            placeholder="Password"
+          />
 
-        <Button className="py-[1.4rem]">Sign Up</Button>
+          <Button className="py-[1.4rem]">Sign Up</Button>
+        </div>
       </form>
     </FormProvider>
   );

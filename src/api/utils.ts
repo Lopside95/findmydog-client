@@ -1,5 +1,7 @@
 import { Add, Route, Update } from "@/types/utils";
 import axios from "axios";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "@/firebase";
 
 export const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -47,6 +49,16 @@ const deleteContent = async (route: Route, id: number) => {
   } catch (error) {
     console.error(error);
   }
+};
+
+export const uploadPhoto = async (
+  file: File,
+  path: string
+): Promise<string> => {
+  const storageRef = ref(storage, path);
+  await uploadBytes(storageRef, file);
+  const url = await getDownloadURL(storageRef);
+  return url;
 };
 
 export { getAll, getById, create, update, deleteContent };

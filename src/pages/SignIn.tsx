@@ -1,4 +1,5 @@
 import { login } from "@/api/users";
+import PageHeader from "@/components/PageHeader";
 import PasswordInput from "@/components/PasswordInput";
 import TextField from "@/components/TextField";
 import { Button } from "@/components/ui/button";
@@ -43,15 +44,16 @@ const SignIn = () => {
 
   return (
     <FormProvider {...form}>
-      <form className="" onSubmit={form.handleSubmit(onSubmit)}>
-        <section className="flex-col flex items-center gap-5">
+      <form className="px-xdf" onSubmit={form.handleSubmit(onSubmit)}>
+        <PageHeader title="Sign In" />
+        <section className=" px-0 flex-col flex items-center gap-5">
           <TextField label="Email" name="email" placeholder="your@email.com" />
           <PasswordInput
             name="password"
             label="Password"
             placeholder="Password"
           />
-          <Button className="py-[1.4rem]">Log In</Button>
+          <Button className="py-[1.4rem]">Sign In</Button>
           {/* <br />
           <Button
             variant="primary"
