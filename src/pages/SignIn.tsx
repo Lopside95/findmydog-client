@@ -51,9 +51,7 @@ const SignIn = () => {
             label="Password"
             placeholder="Password"
           />
-          <Button variant="primary" className="py-[1.4rem]">
-            Log In
-          </Button>
+          <Button className="py-[1.4rem]">Log In</Button>
           {/* <br />
           <Button
             variant="primary"

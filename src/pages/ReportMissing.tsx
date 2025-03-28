@@ -22,7 +22,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import MapComponent from "@/components/Map";
 
-const CreatePost = () => {
+const ReportMissing = () => {
   const [allTags, setAllTags] = useState<Tag[]>();
   const [userMarkers, setUserMarkers] = useState<UserMarker[]>([]);
   const [user, setUser] = useState<User>();
@@ -87,8 +87,8 @@ const CreatePost = () => {
       status: "MISSING",
       img: "https://storage.googleapis.com/find-my-dog/greyhound.jpg",
       urgency: 3,
-      longitude: 0,
-      latitude: 0,
+      // longitude: 0,
+      // latitude: 0,
       userId: user?.id,
     },
   });
@@ -102,18 +102,34 @@ const CreatePost = () => {
 
   const onSubmit: SubmitHandler<PostSchema> = async (data: PostSchema) => {
     try {
-      const res = await axios.post(`${baseUrl}/posts`, data, {
-        headers: {
-          authorisation: `Bearer ${authToken}`,
-        },
+      Object.entries(data).forEach(([key, value]) => {
+        form.setValue(key as keyof PostSchema, value);
       });
 
-      if (res.data.id) {
-        navigate(`/posts/${res.data.id}`);
-      }
+      const formVals = form.getValues();
+
+      navigate("/posts/create-post/step-two", {
+        state: {
+          formVals,
+        },
+      });
     } catch (error) {
       console.error(error);
     }
+
+    // try {
+    //   const res = await axios.post(`${baseUrl}/posts`, data, {
+    //     headers: {
+    //       authorisation: `Bearer ${authToken}`,
+    //     },
+    //   });
+
+    //   if (res.data.id) {
+    //     navigate(`/posts/${res.data.id}`);
+    //   }
+    // } catch (error) {
+    //   console.error(error);
+    // }
   };
 
   const tagOptions = allTags?.map((tag) => ({
@@ -165,16 +181,12 @@ const CreatePost = () => {
               <Plus className="w-8 h-8 text-accent" />
             </div>
           </article>
-          <Button className="mx-auto my-5 py-[1.4rem]" variant="primary">
-            Next
-          </Button>
+          <Button className="mx-auto my-5 py-[1.4rem]">Next</Button>
         </section>
-        <section id="map" className="h-[30rem]">
-          {/* <MapComponent /> */}
-        </section>
+        <section id="map" className="h-[30rem]"></section>
       </form>
     </FormProvider>
   );
 };
 
-export default CreatePost;
+export default ReportMissing;

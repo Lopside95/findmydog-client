@@ -43,7 +43,7 @@ export const updateUserSchema = z.object({
   firstName: z.string(),
   lastName: z.string(),
   email: z.string().trim().email().toLowerCase().optional(),
-  password: z.string(),
+  password: z.string().optional(),
   newPassword: z.string().optional(),
   active: z.boolean().default(true),
 });

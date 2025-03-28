@@ -113,12 +113,17 @@ const Account = () => {
     form.setValue("firstName", user?.firstName || "");
     form.setValue("lastName", user?.lastName || "");
     form.setValue("email", user?.email || "");
-    form.setValue("password", user?.password || "");
+    // form.setValue("password", user?.password || "");
   }, [user]);
 
   setTimeout(() => {
     setUserLoading(false);
   }, 400);
+
+  const errors = form.formState.errors;
+  useEffect(() => {
+    console.log("errors", errors);
+  }, [form.formState.errors]);
 
   if (!user && !userLoading) {
     return <NotFoundPage content="Couldn't find that user" />;
@@ -138,7 +143,7 @@ const Account = () => {
           label="New Password"
           placeholder="New Password"
         />
-        <Button className="py-[1.4rem]" variant={"primary"} type="submit">
+        <Button className="py-[1.4rem]" type="submit">
           Update Details
         </Button>
         {/* <Dialog>

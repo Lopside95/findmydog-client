@@ -3,11 +3,14 @@ import { FormProvider, useForm } from "react-hook-form";
 import Home from "./pages/Home";
 import Nav from "./components/Nav";
 import BottomNav from "./components/BottomNav";
-import CreatePost from "./pages/CreatePost";
+import CreatePost from "./pages/ReportSighting";
 import SignUp from "./pages/SignUp";
 import NotFoundPage from "./pages/404-NotFound";
 import Account from "./pages/Account";
 import SignIn from "./pages/SignIn";
+import StepTwo from "./pages/StepTwo";
+import ReportSighting from "./pages/ReportSighting";
+import ReportMissing from "./pages/ReportMissing";
 // import CreatePost from "./pages/CreatePost/CreatePost";
 // import Nav from "./components/Nav/Nav";
 // import Home from "./pages/Home/Home";
@@ -31,7 +34,9 @@ export const App = () => {
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/posts/create-post" element={<CreatePost />} />
+            <Route path="/posts/create-post" element={<ReportSighting />} />
+            <Route path="/posts/create-post" element={<ReportMissing />} />
+            <Route path="/posts/create-post/step-two" element={<StepTwo />} />
             <Route path="/users/signup" element={<SignUp />} />
             <Route path="/users/signin" element={<SignIn />} />
             <Route path="/users/account" element={<Account />} />

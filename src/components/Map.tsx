@@ -43,7 +43,7 @@ const MapComponent = ({ userMarkers, setUserMarkers }: MyMap) => {
     const map = (mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
       center: [longitude, latitude],
-      zoom: 15,
+      zoom: 13,
       maxZoom: 18,
     }));
     mapRef.current = map;
@@ -109,6 +109,8 @@ const MapComponent = ({ userMarkers, setUserMarkers }: MyMap) => {
         className="map-container"
       />
       <Button
+        className="underline underline-offset-1 px-0 self-start"
+        variant="ghost"
         onClick={(e) => {
           e.preventDefault();
           handleReset();

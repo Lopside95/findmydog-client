@@ -72,11 +72,7 @@ const Nav = () => {
           <SheetTitle></SheetTitle>
           <SheetDescription></SheetDescription>
         </SheetHeader>
-        {/* <SheetHeader>
-          <SheetTitle>Are you absolutely sure?</SheetTitle>
-          <SheetDescription>
-          </SheetDescription>
-        </SheetHeader> */}
+
         <div className="flex flex-col gap-4 px-6 py-4 font-semibold ">
           <h2 onClick={() => handleNavigate("/")}>Home</h2>
           <h2
@@ -101,7 +97,6 @@ const Nav = () => {
           >
             Profile
           </h2>
-          {/* <h2 onClick={() => handleNavigate("/users/account")}>Profile</h2> */}
           <Dialog>
             <DialogTrigger asChild>
               <h2>Delete Account</h2>

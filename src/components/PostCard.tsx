@@ -129,7 +129,10 @@ const PostCard = ({ post }: PostCardProps) => {
           <MyAvatar src="" alt="User Avatar">
             <UserIcon />
           </MyAvatar>
-          {post.comments?.length} comments
+          {post.comments?.length > 1
+            ? post.comments.length + " comments"
+            : "1 comment"}
+          {/* {post.comments?.length} comments */}
         </div>
       </CardFooter>
     </Card>

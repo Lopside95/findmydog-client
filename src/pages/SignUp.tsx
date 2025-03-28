@@ -54,9 +54,7 @@ const SignUp = () => {
           placeholder="Password"
         />
 
-        <Button className="py-[1.4rem]" variant="primary">
-          Sign Up
-        </Button>
+        <Button className="py-[1.4rem]">Sign Up</Button>
       </form>
     </FormProvider>
   );

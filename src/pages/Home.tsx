@@ -71,7 +71,6 @@ const Home = () => {
           <h2 className="w-72">Report the sighting of a lost or stray dog</h2>
           <Button
             className="bg-secondary"
-            variant="primary"
             onClick={() => navigate("/posts/create-post")}
           >
             Report
@@ -79,13 +78,12 @@ const Home = () => {
         </article>
         <article className="flex flex-col items-center gap-5 text-center">
           <h2 className="w-72">Find a lost dog</h2>
-          <Button className="bg-secondary" variant="primary">
-            Find
-          </Button>
+          <Button className="bg-secondary">Find</Button>
         </article>
       </section>
 
       <section>
+        <h2 className="py-4">Recent posts</h2>
         {filteredPosts?.map((post) => {
           return <PostCard key={post.id} post={post} />;
         })}
