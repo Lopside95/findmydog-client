@@ -100,18 +100,13 @@ const ReportSighting = () => {
 
   // setPhoto(newPhoto);
 
-  useEffect(() => {
-    if (userMarkers.length) {
-      form.setValue("latitude", userMarkers[0].lat);
-      form.setValue("longitude", userMarkers[0].lng);
-    }
-  }, [userMarkers]);
-
   const onSubmit: SubmitHandler<PostSchema> = async (data: PostSchema) => {
     try {
       Object.entries(data).forEach(([key, value]) => {
         form.setValue(key as keyof PostSchema, value);
       });
+
+      form.setValue("status", "FOUND");
 
       const formVals = form.getValues();
 
@@ -144,6 +139,10 @@ const ReportSighting = () => {
     label: tag.name,
     value: tag.id,
   }));
+
+  useEffect(() => {
+    form.setValue("status", "FOUND");
+  });
 
   const errors = form.formState.errors;
 

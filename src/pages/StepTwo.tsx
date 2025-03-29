@@ -51,24 +51,15 @@ const StepTwo = () => {
     },
   });
 
-  // "There was an error creating this postError: insert into `posts` (`description`, `img`, `latitude`, `longitude`, `status`, `title`, `type`, `urgency`, `user_id`) values ('dasDASdads', 'https://storage.googleapis.com/find-my-dog/greyhound.jpg', 0, 0, DEFAULT, 'aSDasaSD', DEFAULT, 3, 2) - Unknown column 'type' in 'field list'"
-
   const onSubmit: SubmitHandler<PostSchema> = async (data: PostSchema) => {
     if (file !== null) {
       const url = await uploadPhoto(
         file,
-        `/images/${formVals.userId}/${formVals.title}/${file.name}`
+        `/findmydog/${formVals.title}/${file.name}`
       );
 
       data.img = url;
     }
-    // if (file !== null) {
-    //   const url = await uploadPhoto(
-    //     file,
-    //     `/images/${shelterId}/${animalName}/${file.name}`
-    //   );
-
-    //   data.img = url;
 
     try {
       const res = await axios.post(`${baseUrl}/posts`, data, {
@@ -78,7 +69,7 @@ const StepTwo = () => {
       });
 
       if (res.data.id) {
-        navigate(`/posts/${res.data.id}`);
+        navigate(`/`);
       }
     } catch (error) {
       console.error(error);
@@ -90,6 +81,17 @@ const StepTwo = () => {
   useEffect(() => {
     console.log("errors", errors);
   }, [form.formState.errors]);
+
+  useEffect(() => {
+    if (userMarkers.length) {
+      form.setValue("latitude", userMarkers[0].lat);
+      form.setValue("longitude", userMarkers[0].lng);
+    }
+  }, [userMarkers]);
+
+  useEffect(() => {
+    console.log("userMarkers", userMarkers);
+  }, [userMarkers]);
 
   if (!formVals) {
     return <div>Loading...</div>;
@@ -104,16 +106,12 @@ const StepTwo = () => {
         <h2 className="self-start">Step Two</h2>
         <div className="w-full h-[1px] bg-accent mt-2 "></div>
         <h3 className="self-start my-5">Choose a location on the map</h3>
-        <MapComponent
+        {/* <MapComponent
           userMarkers={userMarkers}
           setUserMarkers={setUserMarkers}
-        />
+        /> */}
 
-        <Button
-          className={`py-[1.4rem]  "mt-4"}`}
-          // className={`py-[1.4rem] ${file !== null ? "mt-40" : "mt-4"}`}
-          type="submit"
-        >
+        <Button className={`mt-4`} type="submit">
           Done
         </Button>
       </form>

@@ -9,11 +9,13 @@ const NotFoundPage = ({ content }: NotFoundProps) => {
   const navigate = useNavigate();
 
   return (
-    <section>
+    <section className="flex flex-col items-center justify-center h-screen bg-gray-100">
       <h1>Oops!</h1>
       <img src="/images/dog-404.png" alt="Error Dog" />
-      <p>Something went wrong. We can't find this page.</p>
-      <Button onClick={() => navigate(-1)}>Go Back</Button>
+      <p>We can't find this page.</p>
+      <Button className="py-5 my-5" onClick={() => navigate(-1)}>
+        Go Back
+      </Button>
     </section>
     //     {content ? content : "We can't find this page"}
   );

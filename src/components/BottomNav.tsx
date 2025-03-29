@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 import { Home, User } from "lucide-react";
 import MyAvatar from "./MyAvatar";
@@ -11,6 +11,22 @@ const BottomNav = () => {
   const authToken = localStorage.getItem("authToken");
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const location = useLocation();
+
+  const handleHomeScroll = () => {
+    if (location.pathname === "/") {
+      const scrollToTop = () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      };
+      scrollToTop();
+    } else {
+      navigate("/");
+    }
+  };
 
   // const handleAccNav = () => {
   //   if (authToken) {
@@ -32,8 +48,8 @@ const BottomNav = () => {
   };
 
   return (
-    <div className="flex fixed bottom-0 h-14 w-full bg-secondary items-center justify-between px-10">
-      <Home className="w-8 h-8" onClick={() => navigate("/")} />
+    <div className="flex fixed bottom-0 h-14 w-full bg-secondary z-40 items-center justify-between px-10">
+      <Home className="w-8 h-8" onClick={handleHomeScroll} />
 
       {/* <MyAvatar src="/athena.svg" alt="User Avatar" onClick={handleAccNav}>
         <User />

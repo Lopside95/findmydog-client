@@ -100,16 +100,6 @@ const Nav = () => {
           <Dialog>
             <DialogTrigger asChild>
               <h2>Delete Account</h2>
-              {/* <Button
-                className="py-[1.4rem]"
-                variant="primary"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setDialogIsShown(true);
-                }}
-              >
-                Delete Account
-              </Button> */}
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>

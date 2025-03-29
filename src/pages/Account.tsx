@@ -171,7 +171,35 @@ const Account = () => {
                 </DialogDescription>
               </DialogHeader>
             </DialogContent>
-          </Dialog> */}
+          </Dialog> */}{" "}
+          <Dialog>
+            <DialogTrigger asChild className="self-end fixed bottom-18">
+              <h6>Delete Account</h6>
+              {/* <Button
+                className="py-[1.4rem]"
+                variant="primary"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setDialogIsShown(true);
+                }}
+              >
+                Delete Account
+              </Button> */}
+            </DialogTrigger>
+            <DialogContent className="w-80">
+              <DialogHeader>
+                <DialogTitle>Are you sure?</DialogTitle>
+                <DialogDescription>
+                  <Button
+                    onClick={handleDelete}
+                    className="bg-accent-alt py-5 mt-4"
+                  >
+                    Delete account
+                  </Button>
+                </DialogDescription>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
           <img src="/dog-2.svg" className="fixed left-5 bottom-12" />
         </form>
       </main>

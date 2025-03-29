@@ -70,7 +70,7 @@ const Home = () => {
         <article className="flex flex-col items-center gap-5 text-center">
           <h2 className="w-72">Report the sighting of a lost or stray dog</h2>
           <Button
-            className="bg-secondary"
+            className="bg-secondary "
             onClick={() => navigate("/posts/create-post")}
           >
             Report
@@ -84,7 +84,7 @@ const Home = () => {
 
       <section>
         <h2 className="py-4">Recent posts</h2>
-        {filteredPosts?.map((post) => {
+        {[...(filteredPosts || [])].reverse().map((post) => {
           return <PostCard key={post.id} post={post} />;
         })}
       </section>

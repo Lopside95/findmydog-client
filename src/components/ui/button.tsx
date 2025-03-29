@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-accent text-foreground font-semibold w-40 shadow-xs text-xl py-[1.4rem]",
+          "bg-accent py-[1.4rem] rounded-[0.68rem] text-foreground font-semibold w-40 shadow-xs text-xl ",
         // default:
         //   "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
         destructive:
@@ -27,7 +27,7 @@ const buttonVariants = cva(
         // "bg-accent text-foreground font-semibold w-40 shadow-xs text-xl py-[1.4rem]",
       },
       size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
+        default: "h-9 px-2 py-[1.3rem] has-[>svg]:px-3",
         sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
         lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
         icon: "size-9",

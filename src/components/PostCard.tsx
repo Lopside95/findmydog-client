@@ -99,11 +99,11 @@ const PostCard = ({ post }: PostCardProps) => {
               />
             </CarouselItem>
             <CarouselItem className="w-40 h-52 p-0 snap-start -mr-14 rounded-xl object-cover relative">
-              <StillMap
+              {/* <StillMap
                 ref={mapRef}
                 lng={post.longitude ?? 0}
                 lat={post.latitude ?? 0}
-              />
+              /> */}
               <Button
                 // onReset={() => {
                 //   console.log("Reset triggered from PostCard");
