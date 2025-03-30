@@ -87,28 +87,29 @@ const AddComment = () => {
 
   if (!user) {
     return (
-      <div style={{ margin: "0 auto" }}>
-        <Button>Log in</Button>
-      </div>
+      // <div style={{ margin: "0 auto" }}>
+      <Button onClick={() => navigate("/users/signin")} className="mx-auto">
+        Sign In
+      </Button>
+      // </div>
     );
   }
 
   return (
     <FormProvider {...form}>
-      <form className="add-comment" onSubmit={form.handleSubmit(onSubmit)}>
+      <form
+        className="mt-0 pt-5 flex flex-col items-center"
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
         {!user ? (
           <h4>
             {" "}
-            <span
-              onClick={() => navigate("/users/login")}
-              className="login-message"
-            >
-              Log in
-            </span>{" "}
-            to comment
+            <span onClick={() => navigate("/users/login")}>Log in</span> to
+            comment
           </h4>
         ) : null}
         <TextField label="Add comment" name="content" />
+        <Button className="my-2">Add</Button>
       </form>
     </FormProvider>
   );

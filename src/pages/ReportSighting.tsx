@@ -129,7 +129,11 @@ const ReportSighting = () => {
 
   useEffect(() => {
     form.setValue("status", "FOUND");
-  });
+  }, []);
+
+  const status = form.watch("status");
+
+  console.log("watchedStatus", status);
 
   const errors = form.formState.errors;
 
@@ -151,7 +155,39 @@ const ReportSighting = () => {
           <article className="flex flex-col gap-5">
             <TextField name="title" label="Title" />
             <TextField name="description" label="Description" />
-            <TagsInput tags={allTags || []} />
+            {/* <FormLabel className={`${error?.message ? "hidden" : ""} text-2xl`}> */}
+            <>
+              <div className="flex justify-between">
+                <FormLabel className="text-2xl my-0 py-0">Tags</FormLabel>
+                <div className="mr-4">
+                  <Button
+                    className={`rounded-none h-9 mr-0.5 w-14 py-0 ${
+                      status === "FOUND" && "bg-accent"
+                    } `}
+                    variant="secondary"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      form.setValue("status", "FOUND");
+                    }}
+                  >
+                    Found
+                  </Button>
+                  <Button
+                    className={`rounded-none h-9 w-14 py-0 ${
+                      status === "MISSING" && "bg-accent"
+                    } `}
+                    variant="secondary"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      form.setValue("status", "MISSING");
+                    }}
+                  >
+                    Missing
+                  </Button>
+                </div>
+              </div>
+              <TagsInput tags={allTags || []} />
+            </>
             {/* <TextField name="tags" label="Tags" /> */}
             {/* <Select>
                 <SelectTrigger className="w-full border-none shadow-none focus:border-none focus:ring-0 focus:outline-none focus:shadow-none focus:none focus-visible:ring-0">

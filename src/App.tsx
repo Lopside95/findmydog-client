@@ -11,6 +11,7 @@ import SignIn from "./pages/SignIn";
 import StepTwo from "./pages/StepTwo";
 import ReportSighting from "./pages/ReportSighting";
 import { Toaster } from "./components/ui/sonner";
+import SinglePost from "./pages/SinglePost";
 // import ReportMissing from "./pages/ReportMissing";
 
 export const App = () => {
@@ -26,6 +27,7 @@ export const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/posts/create-post" element={<ReportSighting />} />
             {/* <Route path="/posts/create-post" element={<ReportMissing />} /> */}
+            <Route path="/posts/:id" element={<SinglePost />} />
             <Route path="/posts/create-post/step-two" element={<StepTwo />} />
             <Route path="/users/signup" element={<SignUp />} />
             <Route path="/users/signin" element={<SignIn />} />

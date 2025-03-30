@@ -28,7 +28,7 @@ interface TagsInputProps {
 }
 
 const TagsInput = ({ input, tags }: TagsInputProps) => {
-  const { getFieldState, setFocus } = useFormContext<PostSchema>();
+  const { getFieldState, setFocus, setValue } = useFormContext<PostSchema>();
 
   const [open, setOpen] = useState<boolean>(false);
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
@@ -42,6 +42,8 @@ const TagsInput = ({ input, tags }: TagsInputProps) => {
       setSelectedTags([...selectedTags, selectedTag]);
     }
     setOpen(false);
+
+    setValue("tags", selectedTags);
   };
 
   const removeTag = (tagId: number) => {
@@ -51,27 +53,8 @@ const TagsInput = ({ input, tags }: TagsInputProps) => {
   return (
     <div className="flex flex-col gap-4 w-full max-w-sm">
       <Command className="">
-        {/* <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger asChild>
-          <Button
-            variant="outline"
-            role="combobox"
-            aria-expanded={open}
-            className="w-full justify-between"
-          >
-            Select tags...
-            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-full p-0"> */}
-
-        {/* <Popover open={open} onOpenChange={setOpen}>
-          <PopoverTrigger asChild>
-          </PopoverTrigger>
-          <PopoverContent className="w-92 p-0"> */}
-        {/* <CommandList className="w-full"> */}
         <TagsCommandInput
-          className={`w-[100%] border-none bg-secondary rounded-none shadow-none caret-accent focus:border-none focus:shadow-none focus:ring-0 focus:outline-none focus:none focus-visible:ring-0`}
+          className={`w-[100%] border-none pl-2 bg-secondary rounded-none shadow-none caret-accent focus:border-none focus:shadow-none focus:ring-0 focus:outline-none focus:none focus-visible:ring-0`}
           onClick={() => setOpen(!open)}
           placeholder="Search tags..."
           style={{ borderRadius: "0px" }}

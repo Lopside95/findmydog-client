@@ -24,26 +24,21 @@ import StillMap from "./StillMap";
 import { Button } from "./ui/button";
 import { useRef } from "react";
 import { Map, MapMouseEvent, IControl } from "mapbox-gl";
-import { useLocation, useNavigate } from "react-router";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "./ui/accordion";
+import { useLocation } from "react-router";
 
-interface PostCardProps {
-  post: PostWithUser;
+interface SinglePostCardProps {
+  post: Post;
+  author?: User | null;
 }
+const SinglePostCard = ({ post, author }: SinglePostCardProps) => {
+  //   const user = {
+  //     firstName: post.first_name,
+  //     lastName: post.last_name,
+  //     email: post.email,
+  //   };
 
-const PostCard = ({ post }: PostCardProps) => {
-  const user = {
-    firstName: post.first_name,
-    lastName: post.last_name,
-    email: post.email,
-  };
+  //   console.log("user", user);
 
-  const navigate = useNavigate();
   const location = useLocation();
 
   const updatedAt = formatDateShort(new Date(post.updated_at));
@@ -55,23 +50,13 @@ const PostCard = ({ post }: PostCardProps) => {
     lat: post.latitude,
   };
 
-  const comments = post.comments;
-
-  console.log("comments", comments);
-
   const mapRef = useRef<{ resetMap: () => void } | null>(null);
 
-  // const handleToSinglePost = () => {
-  //   // if (location.pathname === "/") {
-  //   //   window.location.href = `/posts/${post.id}`;
-  //   // }
-  //   navigate(`posts/${post.id}`, {
-  //     state: {
-  //       post,
-  //       user,
-  //     },
-  //   });
-  // };
+  //   const handleToSinglePost = () => {
+  //     if (location.pathname === "/") {
+  //       window.location.href = `/posts/${post.id}`;
+  //     }
+  //   };
 
   const handleReset = () => {
     if (mapRef.current) {
@@ -88,14 +73,15 @@ const PostCard = ({ post }: PostCardProps) => {
               <UserIcon />
             </MyAvatar>
             <h5>
-              {user.firstName} {user.lastName}
+              {author?.firstName ?? "Unknown"} {author?.lastName ?? "User"}
+              {/* {author?.firstName} {author?.lastName} */}
             </h5>
           </div>
           <Badge className="bg-secondary-alt h-5 text-primary">
             {updatedAt}
           </Badge>
         </CardTitle>
-        <CardDescription>{post.title}</CardDescription>
+        <CardDescription className="px-0">{post.title}</CardDescription>
       </CardHeader>
       <CardContent>
         <Carousel className="w-[90%] self-center pb-5">
@@ -104,7 +90,7 @@ const PostCard = ({ post }: PostCardProps) => {
               <img
                 src={post.img ?? "/images/dog-404.png"}
                 alt="Post Image"
-                className="object-cover w-full h-full"
+                className=" object-cover w-full h-full"
                 // onClick={handleToSinglePost}
                 // className="w-52 rounded-md h-40 object-cover "
               />
@@ -134,46 +120,12 @@ const PostCard = ({ post }: PostCardProps) => {
       </CardContent>
       <CardFooter className="flex-col flex items-start">
         <div className="flex items-center gap-2 mt-2">
-          {/* <MyAvatar src="" alt="User Avatar">
-            <UserIcon className="w-4" />
-          </MyAvatar> */}
-          <Accordion type="single" collapsible>
-            <AccordionItem value="item-1">
-              {comments?.length ? (
-                <AccordionTrigger>
-                  <p className="">
-                    {post.comments?.length > 1
-                      ? post.comments?.length + " comments"
-                      : post.comments?.length === 1
-                      ? "1 comment"
-                      : "No comments"}
-                  </p>
-                </AccordionTrigger>
-              ) : (
-                <p className="">No comments</p>
-              )}
-              <AccordionContent>
-                {comments?.map((comment) => (
-                  <div className="flex items-center" key={comment.id}>
-                    <MyAvatar cn="w-4 h-4" src="" alt="User Avatar">
-                      <UserIcon className="w-4 h-4" />
-                    </MyAvatar>
-                    <p className="text-[1rem]">{comment.content}</p>
-                  </div>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-          {/* <p className="text-sm">
-            {post.comments?.length > 1
-              ? post.comments?.length + " comments"
-              : post.comments?.length === 1
-              ? "1 comment"
-              : "No comments"}
-          </p> */}
-          {/* {post.comments?.length > 1
+          <MyAvatar src="" alt="User Avatar">
+            <UserIcon />
+          </MyAvatar>
+          {post.comments?.length > 1
             ? post.comments.length + " comments"
-            : "1 comment"} */}
+            : "1 comment"}
           {/* {post.comments?.length} comments */}
         </div>
       </CardFooter>
@@ -181,4 +133,4 @@ const PostCard = ({ post }: PostCardProps) => {
   );
 };
 
-export default PostCard;
+export default SinglePostCard;

@@ -63,6 +63,8 @@ const Account = () => {
     window.scrollTo({ top: 0 });
   }, []);
 
+  console.log("user", user);
+
   const form = useForm<UpdateUserSchema>({
     resolver: zodResolver(updateUserSchema),
     defaultValues: {

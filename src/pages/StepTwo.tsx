@@ -106,10 +106,10 @@ const StepTwo = () => {
         <h2 className="self-start">Step Two</h2>
         <div className="w-full h-[1px] bg-accent mt-2 "></div>
         <h3 className="self-start my-5">Choose a location on the map</h3>
-        {/* <MapComponent
+        <MapComponent
           userMarkers={userMarkers}
           setUserMarkers={setUserMarkers}
-        /> */}
+        />
 
         <Button className={`mt-4`} type="submit">
           Done

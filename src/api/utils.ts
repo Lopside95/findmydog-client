@@ -15,10 +15,13 @@ const getAll = async <T>(route: string): Promise<T | undefined> => {
   }
 };
 
-const getById = async (route: Route, id: number) => {
+const getById = async <T>(route: Route, id: number): Promise<T | undefined> => {
   try {
     const res = await axios.get(`${baseUrl}/${route}/${id}`);
-    return res;
+    // console.log("res.data", res.data);
+    console.log("res", res);
+
+    return res.data as T;
   } catch (error) {
     console.error(error);
   }

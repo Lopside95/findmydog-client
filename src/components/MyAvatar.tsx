@@ -4,13 +4,20 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 interface AvatarProps extends React.ComponentProps<typeof Avatar> {
   src: string;
   alt: string;
+  cn?: string;
 }
 
-const MyAvatar: React.FC<AvatarProps> = ({ children, src, alt, ...props }) => {
+const MyAvatar: React.FC<AvatarProps> = ({
+  children,
+  src,
+  alt,
+  cn,
+  ...props
+}) => {
   return (
     <Avatar>
-      <AvatarImage src={src} alt={alt} />
-      <AvatarFallback>{children}</AvatarFallback>
+      <AvatarImage className={cn} src={src} alt={alt} />
+      <AvatarFallback className={cn}>{children}</AvatarFallback>
     </Avatar>
   );
 };
