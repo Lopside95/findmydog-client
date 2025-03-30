@@ -36,8 +36,6 @@ const PostCard = ({ post }: PostCardProps) => {
     email: post.email,
   };
 
-  console.log("post", post);
-
   const updatedAt = formatDateShort(new Date(post.updated_at));
 
   const status = post.status.toString().toLocaleLowerCase();
@@ -51,23 +49,9 @@ const PostCard = ({ post }: PostCardProps) => {
 
   const handleReset = () => {
     if (mapRef.current) {
-      mapRef.current.resetMap(); // Call the resetMap function in StillMap
+      mapRef.current.resetMap();
     }
   };
-
-  // const mapRef = useRef<Map | null>(null);
-  // const resetMap = () => {
-  //   console.log("markers", markers);
-
-  //   console.log("mapRef.current", mapRef.current);
-
-  //   if (markers.lng && markers.lat) {
-  //     mapRef.current?.flyTo({
-  //       center: [markers.lng, markers.lat],
-  //       zoom: 12,
-  //     });
-  //   }
-  // };
 
   return (
     <Card className="flex flex-col ">
@@ -105,9 +89,6 @@ const PostCard = ({ post }: PostCardProps) => {
                 lat={post.latitude ?? 0}
               /> */}
               <Button
-                // onReset={() => {
-                //   console.log("Reset triggered from PostCard");
-                // }}
                 onClick={handleReset}
                 variant="secondary"
                 className=" absolute bottom-0 left-0 text-xs rounded-none px-1 z-50 h-5"

@@ -23,6 +23,7 @@ import { Input } from "@/components/ui/input";
 import MapComponent from "@/components/Map";
 import PageHeader from "@/components/PageHeader";
 import ImageUpload from "@/components/ImageUpload";
+import TagsInput from "@/components/TagsInput";
 
 const ReportSighting = () => {
   const [allTags, setAllTags] = useState<Tag[]>();
@@ -119,20 +120,6 @@ const ReportSighting = () => {
     } catch (error) {
       console.error(error);
     }
-
-    // try {
-    //   const res = await axios.post(`${baseUrl}/posts`, data, {
-    //     headers: {
-    //       authorisation: `Bearer ${authToken}`,
-    //     },
-    //   });
-
-    //   if (res.data.id) {
-    //     navigate(`/posts/${res.data.id}`);
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    // }
   };
 
   const tagOptions = allTags?.map((tag) => ({
@@ -150,8 +137,6 @@ const ReportSighting = () => {
     console.log("errors", errors);
   }, [form.formState.errors]);
 
-  const { register, watch, formState } = form;
-
   useEffect(() => {
     if (!isLoggedIn) {
       setToastShown(true);
@@ -166,7 +151,8 @@ const ReportSighting = () => {
           <article className="flex flex-col gap-5">
             <TextField name="title" label="Title" />
             <TextField name="description" label="Description" />
-            <TextField name="tags" label="Tags" />
+            <TagsInput tags={allTags || []} />
+            {/* <TextField name="tags" label="Tags" /> */}
             {/* <Select>
                 <SelectTrigger className="w-full border-none shadow-none focus:border-none focus:ring-0 focus:outline-none focus:shadow-none focus:none focus-visible:ring-0">
                   <SelectValue placeholder="Select Tags" />

@@ -10,6 +10,7 @@ import Account from "./pages/Account";
 import SignIn from "./pages/SignIn";
 import StepTwo from "./pages/StepTwo";
 import ReportSighting from "./pages/ReportSighting";
+import { Toaster } from "./components/ui/sonner";
 // import ReportMissing from "./pages/ReportMissing";
 
 export const App = () => {
@@ -19,6 +20,7 @@ export const App = () => {
     <>
       <FormProvider {...form}>
         <BrowserRouter>
+          <Toaster />
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />

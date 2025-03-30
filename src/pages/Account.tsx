@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/dialog";
 import { deleteUser } from "@/api/users";
 import PageHeader from "@/components/PageHeader";
+import myToast from "@/components/MyToast";
 const Account = () => {
   const [user, setUser] = useState<User | null>(null);
   const [dialogIsShown, setDialogIsShown] = useState<boolean>(false);
@@ -85,7 +86,15 @@ const Account = () => {
       );
 
       if (res.status === 200) {
-        toast("User updated successfully");
+        myToast("Successfuly updated");
+        // toast(<p>Successfuly updated</p>, {
+        //   style: {
+        //     fontFamily: "var(--font-serif)",
+        //     boxShadow: "none",
+        //     border: "none",
+        //     width: "100%",
+        //   },
+        // });
       }
     } catch (error) {
       console.error(error);
