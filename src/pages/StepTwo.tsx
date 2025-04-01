@@ -13,6 +13,7 @@ import {
   useFormContext,
 } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router";
+import NotFoundPage from "./404-NotFound";
 
 const StepTwo = () => {
   const { control, getFieldState, getValues } = useFormContext<PostSchema>();
@@ -36,13 +37,14 @@ const StepTwo = () => {
 
   const theValues = getValues();
 
+  const formStatus = formVals?.status;
+
   const form = useForm<PostSchema>({
     resolver: zodResolver(postSchema),
     defaultValues: {
       title: formVals.title,
       description: formVals.description,
       tags: formVals.tags,
-      status: formVals.status,
       img: "",
       // img: formVals.img,
       urgency: formVals.urgency,
@@ -50,6 +52,10 @@ const StepTwo = () => {
       latitude: 0,
     },
   });
+
+  useEffect(() => {
+    form.setValue("status", formStatus ? formStatus : "FOUND");
+  }, [formStatus]);
 
   const onSubmit: SubmitHandler<PostSchema> = async (data: PostSchema) => {
     if (file !== null) {
@@ -68,6 +74,8 @@ const StepTwo = () => {
         },
       });
 
+      console.log("res", res);
+
       if (res.data.id) {
         navigate(`/`);
       }
@@ -75,6 +83,8 @@ const StepTwo = () => {
       console.error(error);
     }
   };
+
+  console.log("form.getValues()", form.getValues());
 
   const errors = form.formState.errors;
 
@@ -89,12 +99,8 @@ const StepTwo = () => {
     }
   }, [userMarkers]);
 
-  useEffect(() => {
-    console.log("userMarkers", userMarkers);
-  }, [userMarkers]);
-
   if (!formVals) {
-    return <div>Loading...</div>;
+    return <NotFoundPage content="Something went wrong. Please try again." />;
   }
 
   return (

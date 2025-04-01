@@ -1,6 +1,6 @@
 import TextField from "@/components/TextField";
 import { Separator } from "@/components/ui/separator";
-import { postSchema, PostSchema, Tag } from "@/types/schemas";
+import { postSchema, PostSchema, PostStatus, Tag } from "@/types/schemas";
 import { useEffect, useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -32,7 +32,7 @@ const ReportSighting = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [toastShown, setToastShown] = useState<boolean>(false);
   const [file, setFile] = useState<File | null>(null);
-
+  const [postStatus, setPostStatus] = useState<PostStatus>();
   const authToken = localStorage.getItem("authToken");
 
   const navigate = useNavigate();
@@ -100,16 +100,23 @@ const ReportSighting = () => {
   // const newPhoto = URL.createObjectURL(acceptedFiles[0]);
 
   // setPhoto(newPhoto);
+  const status = form.watch("status");
 
   const onSubmit: SubmitHandler<PostSchema> = async (data: PostSchema) => {
     try {
-      Object.entries(data).forEach(([key, value]) => {
-        form.setValue(key as keyof PostSchema, value);
-      });
+      form.setValue("userId", user?.id);
+      form.setValue("status", status);
+      form.setValue("img", file ? URL.createObjectURL(file) : "");
+      form.setValue("longitude", 0);
+      form.setValue("latitude", 0);
+      form.setValue("tags", data.tags);
 
-      form.setValue("status", "FOUND");
+      // Object.entries(data).forEach(([key, value]) => {
+      //   form.setValue(key as keyof PostSchema, value);
+      // });
 
       const formVals = form.getValues();
+      console.log("formVals", formVals);
 
       navigate("/posts/create-post/step-two", {
         state: {
@@ -126,14 +133,6 @@ const ReportSighting = () => {
     label: tag.name,
     value: tag.id,
   }));
-
-  useEffect(() => {
-    form.setValue("status", "FOUND");
-  }, []);
-
-  const status = form.watch("status");
-
-  console.log("watchedStatus", status);
 
   const errors = form.formState.errors;
 
