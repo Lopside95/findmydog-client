@@ -84,13 +84,7 @@ const StepTwo = () => {
     }
   };
 
-  console.log("form.getValues()", form.getValues());
-
   const errors = form.formState.errors;
-
-  useEffect(() => {
-    console.log("errors", errors);
-  }, [form.formState.errors]);
 
   useEffect(() => {
     if (userMarkers.length) {

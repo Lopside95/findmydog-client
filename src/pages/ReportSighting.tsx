@@ -89,17 +89,11 @@ const ReportSighting = () => {
     defaultValues: {
       tags: [],
       status: "FOUND",
-      // img: "https://storage.googleapis.com/find-my-dog/greyhound.jpg",
       urgency: 3,
-      // longitude: 0,
-      // latitude: 0,
       userId: user?.id,
     },
   });
 
-  // const newPhoto = URL.createObjectURL(acceptedFiles[0]);
-
-  // setPhoto(newPhoto);
   const status = form.watch("status");
 
   const onSubmit: SubmitHandler<PostSchema> = async (data: PostSchema) => {
@@ -110,10 +104,6 @@ const ReportSighting = () => {
       form.setValue("longitude", 0);
       form.setValue("latitude", 0);
       form.setValue("tags", data.tags);
-
-      // Object.entries(data).forEach(([key, value]) => {
-      //   form.setValue(key as keyof PostSchema, value);
-      // });
 
       const formVals = form.getValues();
       console.log("formVals", formVals);
@@ -128,11 +118,6 @@ const ReportSighting = () => {
       console.error(error);
     }
   };
-
-  const tagOptions = allTags?.map((tag) => ({
-    label: tag.name,
-    value: tag.id,
-  }));
 
   const errors = form.formState.errors;
 
