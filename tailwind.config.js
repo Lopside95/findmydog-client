@@ -1,11 +1,9 @@
 module.exports = {
-  // ...existing code...
   theme: {
     extend: {
       fontFamily: {
-        inter: ["Inter", "sans-serif"], // Add this line
+        inter: ["Inter", "sans-serif"],
       },
     },
   },
-  // ...existing code...
 };

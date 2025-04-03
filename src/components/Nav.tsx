@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import {
   Sheet,
@@ -18,10 +18,50 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
+import { User } from "@/types/posts";
+import axios from "axios";
+import { baseUrl } from "@/api/utils";
+import { deleteUser } from "@/api/users";
 const Nav = () => {
   const navigate = useNavigate();
 
   const authToken = localStorage.getItem("authToken");
+
+  const [user, setUser] = useState<User | null>(null);
+  const [dialogIsShown, setDialogIsShown] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [userLoading, setUserLoading] = useState<boolean>(true);
+
+  const fetchUser = async () => {
+    try {
+      const { data } = await axios.get(`${baseUrl}/users/account`, {
+        headers: {
+          authorisation: `Bearer ${authToken}`,
+        },
+      });
+
+      const userData: User = {
+        id: data.id,
+        firstName: data.first_name,
+        lastName: data.last_name,
+        email: data.email,
+        password: data.password,
+        active: data.active,
+        posts: data.posts,
+        created_at: data.created_at,
+        updated_at: data.updated_at,
+      };
+
+      setUser(userData);
+    } catch (error: unknown) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
   const [isShown, setIsShown] = useState<boolean>(false);
   const [desktopIsShown, setDesktopIsShown] = useState<boolean>(false);
 
@@ -62,6 +102,24 @@ const Nav = () => {
 
   const authStyle = authToken ? "hidden" : "";
 
+  const handleDelete = async () => {
+    try {
+      if (!user) {
+        console.log("No user found");
+        return;
+      }
+
+      const res = await deleteUser(user?.email);
+
+      if (res?.status === 200) {
+        localStorage.removeItem("authToken");
+        navigate("/");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Sheet open={isShown} onOpenChange={setIsShown}>
       <SheetTrigger className="absolute top-4 right-4 z-50 sm:hidden">
@@ -99,14 +157,15 @@ const Nav = () => {
           </h2>
           <Dialog>
             <DialogTrigger asChild>
-              <h2>Delete Account</h2>
+              <h2 className="absolute text-[1rem] bottom-5 right-5">
+                Delete Account
+              </h2>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>Are you sure?</DialogTitle>
                 <DialogDescription>
-                  This is irrevirsible and will delete your account permanently.
-                  (Not functional yet)
+                  <Button className="bg-accent-alt">Delete account</Button>
                 </DialogDescription>
               </DialogHeader>
             </DialogContent>

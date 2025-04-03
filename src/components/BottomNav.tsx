@@ -48,7 +48,7 @@ const BottomNav = () => {
   };
 
   return (
-    <div className="flex fixed bottom-0 h-14 w-full bg-secondary z-40 items-center justify-between px-10">
+    <div className="flex fixed bottom-0 h-14 w-full bg-background z-40 items-center border-t-1 border-accent justify-between px-10">
       <Home className="w-8 h-8" onClick={handleHomeScroll} />
 
       {/* <MyAvatar src="/athena.svg" alt="User Avatar" onClick={handleAccNav}>
@@ -56,13 +56,27 @@ const BottomNav = () => {
       </MyAvatar> */}
       <Popover open={isOpen}>
         <PopoverTrigger onClick={handleAccNav}>
-          <MyAvatar src="/athena.svg" alt="User Avatar">
+          <MyAvatar src="" alt="User Avatar">
             <User />
           </MyAvatar>
         </PopoverTrigger>
         <PopoverContent className="w-28">
-          <p onClick={() => navigate("/users/signup")}>Sign Up</p>
-          <p onClick={() => navigate("/users/signin")}>Sign In</p>
+          <p
+            onClick={() => {
+              navigate("/users/signup");
+              setIsOpen(false);
+            }}
+          >
+            Sign Up
+          </p>
+          <p
+            onClick={() => {
+              navigate("/users/signin");
+              setIsOpen(false);
+            }}
+          >
+            Sign In
+          </p>
         </PopoverContent>
       </Popover>
 

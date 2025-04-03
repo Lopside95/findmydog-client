@@ -154,7 +154,6 @@ const ReportSighting = () => {
           <article className="flex flex-col gap-5">
             <TextField name="title" label="Title" />
             <TextField name="description" label="Description" />
-            {/* <FormLabel className={`${error?.message ? "hidden" : ""} text-2xl`}> */}
             <>
               <div className="flex justify-between">
                 <FormLabel className="text-2xl my-0 py-0">Tags</FormLabel>

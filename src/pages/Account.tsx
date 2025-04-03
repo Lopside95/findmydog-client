@@ -186,16 +186,6 @@ const Account = () => {
           <Dialog>
             <DialogTrigger asChild className="self-end fixed bottom-18">
               <h6>Delete Account</h6>
-              {/* <Button
-                className="py-[1.4rem]"
-                variant="primary"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setDialogIsShown(true);
-                }}
-              >
-                Delete Account
-              </Button> */}
             </DialogTrigger>
             <DialogContent className="w-80">
               <DialogHeader>

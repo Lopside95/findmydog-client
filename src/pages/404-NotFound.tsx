@@ -17,7 +17,6 @@ const NotFoundPage = ({ content }: NotFoundProps) => {
         Go Back
       </Button>
     </section>
-    //     {content ? content : "We can't find this page"}
   );
 };
 

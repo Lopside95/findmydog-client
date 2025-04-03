@@ -18,7 +18,6 @@ const getAll = async <T>(route: string): Promise<T | undefined> => {
 const getById = async <T>(route: Route, id: number): Promise<T | undefined> => {
   try {
     const res = await axios.get(`${baseUrl}/${route}/${id}`);
-    // console.log("res.data", res.data);
     console.log("res", res);
 
     return res.data as T;

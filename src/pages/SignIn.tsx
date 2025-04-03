@@ -35,7 +35,9 @@ const SignIn = () => {
       if (res?.status !== 200) {
         toast("Invalid email or password");
       } else {
-        navigate("/");
+        setTimeout(() => {
+          navigate("/");
+        }, 500);
       }
     } catch (error) {
       console.error(error);
