@@ -35,8 +35,6 @@ const StepTwo = () => {
     }
   });
 
-  const theValues = getValues();
-
   const formStatus = formVals?.status;
 
   const form = useForm<PostSchema>({
@@ -46,7 +44,6 @@ const StepTwo = () => {
       description: formVals.description,
       tags: formVals.tags,
       img: "",
-      // img: formVals.img,
       urgency: formVals.urgency,
       longitude: 0,
       latitude: 0,
@@ -110,7 +107,6 @@ const StepTwo = () => {
           userMarkers={userMarkers}
           setUserMarkers={setUserMarkers}
         />
-
         <Button className={`mt-4`} type="submit">
           Done
         </Button>
