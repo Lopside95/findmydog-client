@@ -132,16 +132,18 @@ const Nav = () => {
         </SheetHeader>
 
         <div className="flex flex-col gap-4 px-6 py-4 font-semibold ">
-          <h2 onClick={() => handleNavigate("/")}>Home</h2>
+          <h2 className="cursor-pointer" onClick={() => handleNavigate("/")}>
+            Home
+          </h2>
           <h2
-            className={`${authToken && "hidden"}`}
+            className={`${authToken && "hidden"} cursor-pointer`}
             onClick={() => handleNavigate("/users/signup")}
           >
             Create Profile
           </h2>
           <h2 onClick={() => handleNavigate("/posts/create-post")}>New Post</h2>
           <h2
-            className={`${authToken && "hidden"}`}
+            className={`${authToken && "hidden"} cursor-pointer`}
             onClick={() => handleNavigate("/users/signin")}
           >
             Sign In
@@ -150,14 +152,14 @@ const Nav = () => {
             Sign Out
           </h2>
           <h2
-            className={`${!authToken && "hidden"}`}
+            className={`${!authToken && "hidden"} cursor-pointer`}
             onClick={() => handleNavigate("/users/account")}
           >
             Profile
           </h2>
           <Dialog>
             <DialogTrigger asChild>
-              <h2 className="absolute text-[1rem] bottom-5 right-5">
+              <h2 className="absolute text-[1rem] bottom-5 right-5 cursor-pointer">
                 Delete Account
               </h2>
             </DialogTrigger>

@@ -25,7 +25,7 @@ const SignUp = () => {
   const onSubmit: SubmitHandler<UserSchema> = async (data: UserSchema) => {
     try {
       const res = await createUser(data);
-      navigate("/users/login");
+      navigate("/users/signin");
       return res;
     } catch (error) {
       console.error(error);

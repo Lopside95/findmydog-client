@@ -105,7 +105,7 @@ const Home = () => {
         </article>
       </section>
 
-      <section>
+      <section className="">
         <h2 className="py-4">Recent posts</h2>
         {[...(filteredPosts || [])].reverse().map((post) => {
           return <PostCard key={post.id} post={post} sessionUser={user} />;

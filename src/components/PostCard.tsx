@@ -73,7 +73,11 @@ const PostCard = ({ post, sessionUser }: PostCardProps) => {
     lat: post.latitude,
   };
 
+  const latitude = post.latitude;
+  const longitude = post.longitude;
+
   const comments = post.comments;
+  const googleMapsLocation = `https://www.google.com/maps?q=${latitude},${longitude}`;
 
   const handleAddComment = async () => {
     if (!sessionUser?.id) {
@@ -117,18 +121,6 @@ const PostCard = ({ post, sessionUser }: PostCardProps) => {
 
   const mapRef = useRef<{ resetMap: () => void } | null>(null);
 
-  // const handleToSinglePost = () => {
-  //   // if (location.pathname === "/") {
-  //   //   window.location.href = `/posts/${post.id}`;
-  //   // }
-  //   navigate(`posts/${post.id}`, {
-  //     state: {
-  //       post,
-  //       user,
-  //     },
-  //   });
-  // };
-
   const handleReset = () => {
     if (mapRef.current) {
       mapRef.current.resetMap();
@@ -136,7 +128,7 @@ const PostCard = ({ post, sessionUser }: PostCardProps) => {
   };
 
   return (
-    <Card className="flex flex-col ">
+    <Card className="flex flex-col min-w-[380px] max-w-[600px] mx-auto my-5 ">
       <CardHeader>
         <CardTitle className="flex justify-between">
           <div className="flex gap-3">
@@ -160,7 +152,7 @@ const PostCard = ({ post, sessionUser }: PostCardProps) => {
               <img
                 src={post.img ?? "/images/dog-404.png"}
                 alt="Post Image"
-                className="object-cover w-full h-full"
+                className="object-cover w-full h-full cursor-pointer"
               />
             </CarouselItem>
             <CarouselItem
@@ -195,7 +187,10 @@ const PostCard = ({ post, sessionUser }: PostCardProps) => {
               );
             })}
           </div>
-          <p className="text-[0.6rem] underline underline-offset-1 pr-4">
+          <p
+            className="text-[0.6rem] underline underline-offset-1 pr-4 cursor-pointer"
+            onClick={() => window.open(googleMapsLocation)}
+          >
             {" "}
             Google Maps
           </p>
@@ -216,7 +211,7 @@ const PostCard = ({ post, sessionUser }: PostCardProps) => {
             <AccordionItem value="item-1">
               {comments?.length ? (
                 <AccordionTrigger>
-                  <p className="">
+                  <p className="cursor-pointer">
                     {post.comments?.length > 1
                       ? post.comments?.length + " comments"
                       : post.comments?.length === 1
@@ -225,10 +220,7 @@ const PostCard = ({ post, sessionUser }: PostCardProps) => {
                   </p>
                 </AccordionTrigger>
               ) : (
-                // <div className="flex items-center w-full justify-between">
                 <p className="">No comments</p>
-                // <MessageCircle className="" />
-                // </div>
               )}
               <AccordionContent>
                 {comments?.map((comment) => (
@@ -242,21 +234,13 @@ const PostCard = ({ post, sessionUser }: PostCardProps) => {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
-          {/* <p className="text-sm">
-            {post.comments?.length > 1
-              ? post.comments?.length + " comments"
-              : post.comments?.length === 1
-              ? "1 comment"
-              : "No comments"}
-          </p> */}
-          {/* {post.comments?.length > 1
-            ? post.comments.length + " comments"
-            : "1 comment"} */}
-          {/* {post.comments?.length} comments */}
         </div>
         <Dialog>
           <DialogTrigger asChild className="">
-            <MessageCircle onClick={handleAddComment} className="mr-5" />
+            <MessageCircle
+              onClick={handleAddComment}
+              className="mr-5 cursor-pointer"
+            />
           </DialogTrigger>
           <DialogContent className="rounded-none">
             <DialogHeader>
@@ -290,8 +274,6 @@ const PostCard = ({ post, sessionUser }: PostCardProps) => {
             </DialogHeader>
           </DialogContent>
         </Dialog>
-
-        {/* <MessageCircle className="self-end w-6 h-6 mr-5 -mt-6" /> */}
       </CardFooter>
     </Card>
   );

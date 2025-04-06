@@ -49,7 +49,7 @@ const BottomNav = () => {
 
   return (
     <div className="flex fixed bottom-0 h-14 w-full bg-background z-40 items-center border-t-1 border-accent justify-between px-10">
-      <Home className="w-8 h-8" onClick={handleHomeScroll} />
+      <Home className="w-8 h-8 cursor-pointer" onClick={handleHomeScroll} />
 
       {/* <MyAvatar src="/athena.svg" alt="User Avatar" onClick={handleAccNav}>
         <User />

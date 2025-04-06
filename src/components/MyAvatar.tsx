@@ -17,7 +17,9 @@ const MyAvatar: React.FC<AvatarProps> = ({
   return (
     <Avatar>
       <AvatarImage className={cn} src={src} alt={alt} />
-      <AvatarFallback className={cn}>{children}</AvatarFallback>
+      <AvatarFallback className={`cursor-pointer ${cn}`}>
+        {children}
+      </AvatarFallback>
     </Avatar>
   );
 };
