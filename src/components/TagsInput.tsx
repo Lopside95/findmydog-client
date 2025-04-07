@@ -51,7 +51,7 @@ const TagsInput = ({ input, tags }: TagsInputProps) => {
   };
 
   return (
-    <div className="flex flex-col gap-4 w-full max-w-sm">
+    <div className="flex flex-col gap-4 w-full">
       <Command className="">
         <TagsCommandInput
           className={`w-[100%] border-none pl-2 bg-secondary rounded-none shadow-none caret-accent focus:border-none focus:shadow-none focus:ring-0 focus:outline-none focus:none focus-visible:ring-0`}

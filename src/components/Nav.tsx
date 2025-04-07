@@ -122,10 +122,10 @@ const Nav = () => {
 
   return (
     <Sheet open={isShown} onOpenChange={setIsShown}>
-      <SheetTrigger className="absolute top-4 right-4 z-50 sm:hidden">
+      <SheetTrigger className="absolute top-4 right-4 z-50 ">
         <Menu className="w-8 h-8" />
       </SheetTrigger>
-      <SheetContent className="w-[380px] sm:w-[540px] bg-[#F37657] border-none ">
+      <SheetContent className=" w-64 sm:w-[540px] bg-[#F37657] border-none ">
         <SheetHeader>
           <SheetTitle></SheetTitle>
           <SheetDescription></SheetDescription>

@@ -160,29 +160,6 @@ const Account = () => {
           <Button className="py-[1.4rem]" type="submit">
             Update Details
           </Button>
-          {/* <Dialog>
-            <DialogTrigger asChild>
-              <Button
-                className="py-[1.4rem]"
-                variant="primary"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setDialogIsShown(true);
-                }}
-              >
-                Delete Account
-              </Button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Are you absolutely sure?</DialogTitle>
-                <DialogDescription>
-                  This action cannot be undone. This will permanently delete
-                  your account and remove your data from our servers.
-                </DialogDescription>
-              </DialogHeader>
-            </DialogContent>
-          </Dialog> */}{" "}
           <Dialog>
             <DialogTrigger asChild className="self-end fixed bottom-18">
               <h6>Delete Account</h6>

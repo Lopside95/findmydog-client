@@ -128,9 +128,9 @@ const PostCard = ({ post, sessionUser }: PostCardProps) => {
   };
 
   return (
-    <Card className="flex flex-col min-w-[380px] max-w-[600px] mx-auto my-5 ">
-      <CardHeader>
-        <CardTitle className="flex justify-between">
+    <Card className="flex flex-col max-w-[600px]  mx-auto my-5 ">
+      <CardHeader className="px-3">
+        <CardTitle className="flex justify-between ">
           <div className="flex gap-3">
             <MyAvatar src="" alt="User Avatar">
               <UserIcon />
@@ -145,7 +145,7 @@ const PostCard = ({ post, sessionUser }: PostCardProps) => {
         </CardTitle>
         <CardDescription>{post.title}</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className=" px-3">
         <Carousel className="w-[90%] self-center pb-5">
           <CarouselContent className=" w-[88%]  ">
             <CarouselItem className="rounded-xl w-40 h-52 snap-start overflow-hidden bg-accent mx-4 p-0">

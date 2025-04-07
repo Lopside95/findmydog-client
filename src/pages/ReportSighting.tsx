@@ -119,12 +119,6 @@ const ReportSighting = () => {
     }
   };
 
-  const errors = form.formState.errors;
-
-  useEffect(() => {
-    console.log("errors", errors);
-  }, [form.formState.errors]);
-
   useEffect(() => {
     if (!isLoggedIn) {
       setToastShown(true);
@@ -134,7 +128,7 @@ const ReportSighting = () => {
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <section className="flex flex-col">
+        <section className="flex flex-col md:w-3/4 md:mx-auto">
           <PageHeader title="Step one" />
           <article className="flex flex-col gap-5">
             <TextField name="title" label="Title" />
@@ -142,9 +136,9 @@ const ReportSighting = () => {
             <>
               <div className="flex justify-between">
                 <FormLabel className="text-2xl my-0 py-0">Tags</FormLabel>
-                <div className="mr-4">
+                {/* <div className="mr-4">
                   <Button
-                    className={`rounded-none h-9 mr-0.5 w-14 py-0 ${
+                    className={`rounded-none z-20 h-9 mr-0.5 w-14 py-0 ${
                       status === "FOUND" && "bg-accent"
                     } `}
                     variant="secondary"
@@ -154,9 +148,9 @@ const ReportSighting = () => {
                     }}
                   >
                     Found
-                  </Button>
+                  </Button> 
                   <Button
-                    className={`rounded-none h-9 w-14 py-0 ${
+                    className={`rounded-none z-20 h-9 w-14 py-0 ${
                       status === "MISSING" && "bg-accent"
                     } `}
                     variant="secondary"
@@ -167,43 +161,18 @@ const ReportSighting = () => {
                   >
                     Missing
                   </Button>
-                </div>
+                </div> */}
               </div>
               <TagsInput tags={allTags || []} />
             </>
-            {/* <TextField name="tags" label="Tags" /> */}
-            {/* <Select>
-                <SelectTrigger className="w-full border-none shadow-none focus:border-none focus:ring-0 focus:outline-none focus:shadow-none focus:none focus-visible:ring-0">
-                  <SelectValue placeholder="Select Tags" />
-                </SelectTrigger>
-                <SelectContent>
-                  {allTags?.map((tag) => (
-                    <SelectItem key={tag.id} value={tag.name}>
-                      {tag.name}
-                    </SelectItem>
-                  ))}
-         
-                </SelectContent>
-              </Select> */}
           </article>
           <article className="flex flex-col gap-5 pt-5 max-h-[400px] ">
             <FormLabel className="text-2xl">Upload a picture</FormLabel>
             <ImageUpload file={file || undefined} setFile={setFile} />
-            {/* <div className="w-full h-[130px] bg-secondary flex items-center justify-center">
-              <Input type="file" />
-              <Plus className="w-8 h-8 text-accent" />
-            </div> */}
           </article>
-          <Button
-            type="submit"
-            className="mx-auto my-5 py-[1.4rem] z-20"
-            // className={`py-[1.4rem] mx-auto ${
-            //   file !== null ? "mt-40" : "mt-4"
-            // }`}
-          >
+          <Button type="submit" className="mx-auto my-5 py-[1.4rem] z-20">
             Next
           </Button>
-          {/* <Button className="mx-auto my-5 py-[1.4rem]">Next</Button> */}
         </section>
       </form>
     </FormProvider>

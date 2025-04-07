@@ -77,7 +77,7 @@ const Home = () => {
   }, [posts, selectedTags]);
 
   return (
-    <main>
+    <main className="">
       <section className="flex flex-col">
         <h1 className="w-64">
           We help people find lost dogs, and help stray dogs find homes
@@ -89,9 +89,12 @@ const Home = () => {
         />
         <ChevronDown className="w-20 h-20 stroke-[0.5] mx-auto my-10" />
       </section>
-      <section className="h-[26rem] flex flex-col bg-accent w-screen justify-evenly items-center mb-5 px-0">
-        <article className="flex flex-col items-center gap-5 text-center">
-          <h2 className="w-72">Report the sighting of a lost or stray dog</h2>
+
+      <section className="h-[26rem] flex w-full max-lg:flex-col bg-accent mx-0 justify-evenly items-center mb-5 px-0">
+        <article className=" px-0 mx-0 gap-5 text-center">
+          <h2 className="w-72 pb-3">
+            Report the sighting of a lost or stray dog
+          </h2>
           <Button
             className="bg-secondary "
             onClick={() => navigate("/posts/create-post")}
@@ -99,8 +102,8 @@ const Home = () => {
             Report
           </Button>
         </article>
-        <article className="flex flex-col items-center gap-5 text-center">
-          <h2 className="w-72">Find a lost dog</h2>
+        <article className=" items-center gap-5 text-center">
+          <h2 className="w-72 pb-3">Find a lost dog</h2>
           <Button className="bg-secondary">Find</Button>
         </article>
       </section>
