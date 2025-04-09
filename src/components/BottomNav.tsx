@@ -55,28 +55,31 @@ const BottomNav = () => {
     if (authToken) {
       navigate("/users/account");
     } else {
-      setIsOpen((prev) => !prev);
+      setIsOpen(true);
+      // setIsOpen(true);
+      // alert("You are not logged in");
     }
   };
 
   return (
-    <div className="flex fixed bottom-0 h-[3.3rem] w-full   z-40 items-center border-t-1 bg-accent border-accent justify-between px-12 ">
+    <div className="flex fixed bottom-0 h-[3.3rem] w-full   z-50 items-center border-t-1 bg-accent border-accent justify-between px-12 ">
       <h4 className="cursor-pointer" onClick={handleHomeScroll}>
         Home
       </h4>
       {/* <Home className="w-6 h-6 cursor-pointer" onClick={handleHomeScroll} /> */}
-      <ChevronLeft
-        className="w-8 h-8 ml-5 stroke-1"
-        onClick={() => navigate(-1)}
-      />
+      <ChevronLeft className="w-8 h-8 stroke-1" onClick={() => navigate(-1)} />
       <Popover open={isOpen}>
-        <PopoverTrigger onClick={handleAccNav}>
+        <PopoverTrigger
+          onClick={() => {
+            handleAccNav();
+          }}
+        >
           <h4 className="cursor-pointer">Account</h4>
           {/* <User className="bg-accent " /> */}
         </PopoverTrigger>
         <PopoverContent
           ref={popoverRef}
-          className="w-screen shadow-none  h-14 flex justify-around  border-none rounded-none bg-accent  -mb-12"
+          className="w-screen shadow-none  h-14 flex justify-around  border-none rounded-none bg-accent -mb-[2.95rem] md:-mb-12"
         >
           <ChevronDown
             className="w-8 h-8 stroke-1 -mt-1 font-light cursor-pointer "

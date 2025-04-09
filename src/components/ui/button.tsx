@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-accent py-[1.4rem] rounded-[0.68rem] text-foreground font-semibold w-40 shadow-xs text-xl ",
+          "bg-accent py-[1.4rem] rounded-[0.68rem] text-foreground  w-40 shadow-xs text-xl ",
         // default:
         //   "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
         destructive:
