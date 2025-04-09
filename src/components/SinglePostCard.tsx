@@ -37,8 +37,6 @@ const SinglePostCard = ({ post, author }: SinglePostCardProps) => {
   //     email: post.email,
   //   };
 
-  //   console.log("user", user);
-
   const location = useLocation();
 
   const updatedAt = formatDateShort(new Date(post.updated_at));

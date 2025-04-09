@@ -21,10 +21,6 @@ const SignIn = () => {
     },
   });
 
-  // useEffect(() => {
-  //   console.log("Form Errors:", form.formState.errors);
-  // }, [form.formState]);
-
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);

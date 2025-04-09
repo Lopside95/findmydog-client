@@ -63,8 +63,6 @@ const Account = () => {
     window.scrollTo({ top: 0 });
   }, []);
 
-  console.log("user", user);
-
   const form = useForm<UpdateUserSchema>({
     resolver: zodResolver(updateUserSchema),
     defaultValues: {
@@ -106,7 +104,6 @@ const Account = () => {
   const handleDelete = async () => {
     try {
       if (!user) {
-        console.log("No user found");
         return;
       }
 
@@ -131,11 +128,6 @@ const Account = () => {
   setTimeout(() => {
     setUserLoading(false);
   }, 400);
-
-  const errors = form.formState.errors;
-  useEffect(() => {
-    console.log("errors", errors);
-  }, [form.formState.errors]);
 
   if (!user && !userLoading) {
     return <NotFoundPage content="Couldn't find that user" />;

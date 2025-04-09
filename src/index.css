@@ -11,7 +11,7 @@
     url("/src/assets/fonts/RomieTrial-Regular.woff") format("woff"),
     url("/src/assets/fonts/RomieTrial-Regular.otf") format("otf"),
     url("/src/assets/fonts/RomieTrial-Regular.ttf") format("ttf"); */
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
 }
 

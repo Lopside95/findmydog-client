@@ -63,10 +63,6 @@ const AddComment = () => {
     },
   });
 
-  // useEffect(() => {
-  //   console.log("Form Errors:", form.formState.errors);
-  // }, [form.formState]);
-
   const onSubmit: SubmitHandler<CommentSchema> = async (
     data: CommentSchema
   ) => {
@@ -81,18 +77,15 @@ const AddComment = () => {
 
       return res;
     } catch (error) {
-      console.log("There was an error in get authed user", error);
       console.error(error);
     }
   };
 
   if (!user) {
     return (
-      // <div style={{ margin: "0 auto" }}>
       <Button onClick={() => navigate("/users/signin")} className="mx-auto">
         Sign In
       </Button>
-      // </div>
     );
   }
 

@@ -85,7 +85,6 @@ const Nav = () => {
   // const handleDelete = async () => {
   //   try {
   //     if (!user) {
-  //       console.log("No user found");
   //       return;
   //     }
 
@@ -105,7 +104,6 @@ const Nav = () => {
   const handleDelete = async () => {
     try {
       if (!user) {
-        console.log("No user found");
         return;
       }
 

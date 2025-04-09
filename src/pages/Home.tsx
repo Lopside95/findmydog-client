@@ -5,7 +5,7 @@ import { Post, PostWithUser, User } from "@/types/posts";
 import { Tag } from "@/types/schemas";
 import axios from "axios";
 import { ChevronDown } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 
 const Home = () => {
@@ -18,7 +18,7 @@ const Home = () => {
     null
   );
   const [user, setUser] = useState<User | null>(null);
-
+  const postsRef = useRef<HTMLDivElement>(null);
   const authToken = localStorage.getItem("authToken");
   const fetchData = async () => {
     const postsData = await getAll<PostWithUser[]>("posts");
@@ -53,7 +53,7 @@ const Home = () => {
 
       setUser(userData);
     } catch (error: unknown) {
-      console.error(error);
+      // console.error(error);
     }
   };
 
@@ -87,7 +87,15 @@ const Home = () => {
           alt="landing illustration of a dog"
           className="w-80 self-end"
         />
-        <ChevronDown className="w-20 h-20 stroke-[0.5] mx-auto my-10" />
+        <ChevronDown
+          onClick={() => {
+            window.scrollTo({
+              top: postsRef.current?.offsetTop,
+              behavior: "smooth",
+            });
+          }}
+          className="w-20 h-20 stroke-[0.5] mx-auto my-10"
+        />
       </section>
 
       <section className="h-[26rem] flex w-full max-lg:flex-col bg-accent mx-0 justify-evenly items-center mb-5 px-0">
@@ -104,11 +112,21 @@ const Home = () => {
         </article>
         <article className=" items-center gap-5 text-center">
           <h2 className="w-72 pb-3">Find a lost dog</h2>
-          <Button className="bg-secondary">Find</Button>
+          <Button
+            onClick={() => {
+              window.scrollTo({
+                top: postsRef.current?.offsetTop,
+                behavior: "smooth",
+              });
+            }}
+            className="bg-secondary"
+          >
+            Find
+          </Button>
         </article>
       </section>
 
-      <section className="">
+      <section ref={postsRef} className="">
         <h2 className="py-4">Recent posts</h2>
         {[...(filteredPosts || [])].reverse().map((post) => {
           return <PostCard key={post.id} post={post} sessionUser={user} />;

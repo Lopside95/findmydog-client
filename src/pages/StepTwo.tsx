@@ -71,8 +71,6 @@ const StepTwo = () => {
         },
       });
 
-      console.log("res", res);
-
       if (res.data.id) {
         navigate(`/`);
       }

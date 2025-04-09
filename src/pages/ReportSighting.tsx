@@ -106,7 +106,6 @@ const ReportSighting = () => {
       form.setValue("tags", data.tags);
 
       const formVals = form.getValues();
-      console.log("formVals", formVals);
 
       navigate("/posts/create-post/step-two", {
         state: {

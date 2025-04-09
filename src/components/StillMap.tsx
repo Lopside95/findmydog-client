@@ -117,7 +117,6 @@ const StillMap = forwardRef(({ lng, lat }: StillMapProps, ref) => {
 
   useImperativeHandle(ref, () => ({
     resetMap: () => {
-      console.log("Reset logic handled in StillMap");
       mapRef.current?.flyTo({
         center: [lng, lat],
         zoom: 12,
@@ -133,7 +132,6 @@ const StillMap = forwardRef(({ lng, lat }: StillMapProps, ref) => {
   //     if (onReset) {
   //       onReset(); // Trigger the callback passed from PostCard
   //     }
-  //     console.log("Reset logic handled in StillMap");
   //     // Add any additional logic for resetting the map here
   //   };
 

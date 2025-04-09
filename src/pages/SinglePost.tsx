@@ -28,13 +28,10 @@ const SinglePost = () => {
   const authToken = localStorage.getItem("authToken");
   const [postLoading, setPostLoading] = useState<boolean>(true);
   const [isAuthor, setIsAuthor] = useState<boolean>(false);
-  console.log("author", author);
 
   const navigate = useNavigate();
 
   const { id } = useParams();
-
-  // console.log("post", post);
 
   const fetchUser = async () => {
     if (!authToken) {
@@ -95,15 +92,12 @@ const SinglePost = () => {
     }
   };
 
-  console.log("post", post);
-
   // const fetchAuthor = async () => {
   //   try {
   //     if (!post?.user_id) {
   //       return;
   //     }
   //     const authorData = await axios.get(`${baseUrl}/users/${post?.user_id}`);
-  //     console.log("authorData", authorData);
   //   } catch (error) {
   //     console.error(error);
   //   }
