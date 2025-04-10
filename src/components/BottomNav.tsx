@@ -67,7 +67,10 @@ const BottomNav = () => {
         Home
       </h4>
       {/* <Home className="w-6 h-6 cursor-pointer" onClick={handleHomeScroll} /> */}
-      <ChevronLeft className="w-8 h-8 stroke-1" onClick={() => navigate(-1)} />
+      <ChevronLeft
+        className="w-8 h-8 stroke-1 ml-5"
+        onClick={() => navigate(-1)}
+      />
       <Popover open={isOpen}>
         <PopoverTrigger
           onClick={() => {
