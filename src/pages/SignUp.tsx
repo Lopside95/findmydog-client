@@ -38,7 +38,10 @@ const SignUp = () => {
 
   return (
     <FormProvider {...form}>
-      <form className="px-xdf " onSubmit={form.handleSubmit(onSubmit)}>
+      <form
+        className="px-xdf   md:w-3/4 lg:w-3/5 md:mx-auto"
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
         <PageHeader title="Sign Up" />
         <div className="flex-col flex gap-5 items-center">
           <TextField

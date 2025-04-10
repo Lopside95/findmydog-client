@@ -42,7 +42,10 @@ const SignIn = () => {
 
   return (
     <FormProvider {...form}>
-      <form className="px-xdf" onSubmit={form.handleSubmit(onSubmit)}>
+      <form
+        className="px-xdf  md:w-3/4 lg:w-3/5 md:mx-auto"
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
         <PageHeader title="Sign In" />
         <section className=" px-0 flex-col flex items-center gap-5">
           <TextField label="Email" name="email" placeholder="your@email.com" />

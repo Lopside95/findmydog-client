@@ -95,7 +95,7 @@ const StepTwo = () => {
   return (
     <FormProvider {...form}>
       <form
-        className="px-xdf flex flex-col items-center"
+        className="px-xdf flex flex-col  md:w-3/4 lg:w-3/5 md:mx-auto items-center"
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <h2 className="self-start">Step Two</h2>

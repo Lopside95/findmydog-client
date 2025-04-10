@@ -135,7 +135,7 @@ const Account = () => {
 
   return (
     <FormProvider {...form}>
-      <main className="px-xdf ">
+      <main className="px-xdf  md:w-3/4 lg:w-3/5 md:mx-auto ">
         <PageHeader title="Your account" />
         <form
           className="flex flex-col pt-0 items-center gap-5"
@@ -170,7 +170,7 @@ const Account = () => {
               </DialogHeader>
             </DialogContent>
           </Dialog>
-          <img src="/dog-2.svg" className="fixed left-5 bottom-12" />
+          {/* <img src="/dog-2.svg" className="fixed left-5 bottom-12" /> */}
         </form>
       </main>
     </FormProvider>

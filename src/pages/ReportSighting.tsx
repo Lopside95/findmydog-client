@@ -127,7 +127,7 @@ const ReportSighting = () => {
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <section className="flex flex-col md:w-3/4 md:mx-auto">
+        <section className="flex flex-col md:w-3/4 lg:w-3/5 md:mx-auto">
           <PageHeader title="Step one" />
           <article className="flex flex-col gap-5">
             <TextField name="title" label="Title" />
